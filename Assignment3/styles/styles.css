@@ -1,0 +1,384 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* CSS Table of Contents 
+
+1. Resets
+2. Typography
+3. Wrapper
+4. Header
+5. Main
+6. Footer
+7. Animations
+
+*/
+
+/*----------------------------------------
+Resets
+*/
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* End Eric Meyer Reset */
+
+* {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;	
+}
+
+/*----------------------------------------
+End Resets
+*/
+
+/*----------------------------------------
+Typography
+*/
+
+/* Google Fonts 
+
+font-family: 'Corben', cursive;
+font-family: 'Nobile', sans-serif;
+
+*/
+
+body {
+	font-family: 'Nobile', sans-serif; 	
+}
+
+h1, h2, h3 {
+	font-family: 'Corben', cursive;	
+}
+
+p {
+	line-height: 1.5;
+	font-size: 1.1rem;
+	margin-bottom: 1.2rem;	
+}
+
+/*----------------------------------------
+End Typography
+*/
+
+/*----------------------------------------
+Wrapper
+*/
+
+.wrapper {
+	width: 960px;
+	margin: 0 auto;
+	border: 1px solid #CCC;
+}
+
+/*----------------------------------------
+End Wrapper
+*/
+
+/*----------------------------------------
+Header
+*/
+
+header {
+	background-color: #6dcff6;
+	height: 386px;
+	overflow: hidden;
+	position: relative;
+}
+
+header h1 {
+	font-size: 3rem;
+	position: absolute;
+	text-align: center;
+	top: 126px;
+	left: 50%;
+	width: 376px;
+	margin-left: -188px;
+	z-index: 100;
+}
+
+.sun {
+	position: absolute;
+	width: 387px;
+	top: 0;
+	left: 50%;
+	margin-left: -194px;
+	z-index: 10;
+	cursor: pointer;	
+}
+
+.cloud {
+	position: absolute;
+	z-index: 50;	
+}
+
+.cloud_01 {
+	top: 243px;
+	left: 312px;
+}
+
+.cloud_02 {
+	top: 338px;
+	left: 50px;
+}
+
+.cloud_03 {
+	top: 251px;
+	left: 655px;
+}
+
+.cloud_04 {
+	top: 145px;
+	left: 543px;
+}
+
+.cloud_05 {
+	top: 71px;
+	left: 117px;
+}
+
+.menu {
+	float: right;
+	border: 0;
+	background-color: transparent;
+	width: 42px;
+	height: 34px;
+	background-image: url(../images/icon_menu.png);
+	background-size: cover;
+	overflow: hidden;
+	text-indent: -9999px;
+	cursor: pointer;
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
+/*----------------------------------------
+End Header
+*/
+
+/*----------------------------------------
+Main
+*/
+
+main article {
+	padding: 30px;	
+}
+
+main article h1 {
+	text-align: center;
+	font-size: 1.5rem;
+	margin-bottom: 1.1rem;
+}
+
+main article time {
+	text-align: center;
+	margin-bottom: 1.1rem;
+	display: block;	
+	color: #999;
+	font-size: 1.2rem;
+}
+
+/*----------------------------------------
+End Main
+*/
+
+/*----------------------------------------
+Footer
+*/
+
+footer {
+	border-top: 1px solid #CCC;
+	text-align: center;
+	padding: 20px 30px 15px;
+	margin: 0 30px;	
+}
+
+footer p {
+	margin: 0;
+	color: #999;	
+}
+
+/*----------------------------------------
+End Footer
+*/
+
+/*----------------------------------------
+Animations
+*/
+
+.sun:hover {
+    -webkit-animation: spin linear 20s infinite;
+    animation: spin linear 20s infinite;
+}
+
+@-webkit-keyframes spin {
+    100% {
+        -webkit-transform: rotate(1turn);
+    }
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(1turn);
+    }
+}
+
+.cloud_01 {
+    -webkit-animation: float linear 50s infinite;
+    animation: float linear 50s infinite;
+}
+
+.cloud_02 {
+    -webkit-animation: float linear 60s infinite;
+    animation: float linear 60s infinite;
+}
+
+.cloud_03 {
+    -webkit-animation: float linear 70s infinite;
+    animation: float linear 70s infinite;
+}
+
+.cloud_04 {
+    -webkit-animation: float linear 80s infinite;
+    animation: float linear 80s infinite;
+}
+
+.cloud_05 {
+    -webkit-animation: float linear 90s infinite;
+    animation: float linear 90s infinite;
+}
+
+@-webkit-keyframes float {
+    0% {
+        opacity: 0;
+    }
+    23% {
+        left: 100%;
+        opacity: 100;
+    }
+    24% {
+        left: 100%;
+        opacity: 0;
+    }
+    25% {
+        left: -200px;
+        opacity: 0;
+    }
+    26% {
+        left: -200px;
+        opacity: 100;
+    }
+    64% {
+        left: 100%;
+        opacity: 100;
+    }
+    65% {
+        left: 100%;
+        opacity: 0;
+    }
+    66% {
+        left: -200px;
+        opacity: 0;
+    }
+    67% {
+        left: -200px;
+        opacity: 100;
+    }
+    100% {
+        left: 100%;
+        opacity: 100;
+    }
+}
+
+@keyframes float {
+    0% {
+        opacity: 0;
+    }
+    23% {
+        left: 100%;
+        opacity: 100;
+    }
+    24% {
+        left: 100%;
+        opacity: 0;
+    }
+    25% {
+        left: -200px;
+        opacity: 0;
+    }
+    26% {
+        left: -200px;
+        opacity: 100;
+    }
+    64% {
+        left: 100%;
+        opacity: 100;
+    }
+    65% {
+        left: 100%;
+        opacity: 0;
+    }
+    66% {
+        left: -200px;
+        opacity: 0;
+    }
+    67% {
+        left: -200px;
+        opacity: 100;
+    }
+    100% {
+        left: 100%;
+        opacity: 100;
+    }
+}
+
+/*----------------------------------------
+End Animations
+*/
+
