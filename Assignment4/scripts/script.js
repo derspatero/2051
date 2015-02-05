@@ -6,22 +6,27 @@ $submit = $("#btn_submit");
 
 var people;
 
+//initialization
+
 readJSON();
 $output.html("");
 
+//event handlers
+
 $submit.click(function(e) {
     e.preventDefault();
-    $output.html(search($input.val()));
+    $output.html(searchRecord($input.val()));
 });
 
 $input.keyup(function(){
-    $output.html(search($input.val()));
+    $output.html(searchRecord($input.val()));
 });
+
+//functions
 
 function readJSON(){
     $.getJSON('data/people.json', function(data) {
         people = data;
-       console.log(JSON.stringify(people));
     });
 }
 
@@ -35,11 +40,13 @@ function formatData(index) {
     return outputHTML;
 }
 
-function search(query) {
+//SearchRecord will look in the entire record (not just the name) for the search string. It is case independent and will accept regex.
+
+function searchRecord(query) {
     var results = "";
     if (query != "" ) {
         for (var i = 0; i < people.length; i++) {
-            if (JSON.stringify(people[i]).search(query) != -1) {
+            if (JSON.stringify(people[i]).toLowerCase().search(query.toLowerCase()) != -1) {
                 results += formatData(i);
                 console.log(people[i].name);
             }
