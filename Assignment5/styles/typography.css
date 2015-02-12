@@ -1,0 +1,60 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* typography styles */
+
+h1, h2, h3 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+
+h2:nth-of-type(1n+2) {
+	padding-top: 20px;	
+}
+
+ul {
+	margin-bottom: 20px;
+	list-style-type: disc;
+	list-style-position: outside;
+	padding-left: 50px;	
+}
+
+li {
+	margin-bottom: 8px;	
+}
+
+p, li, label, input {
+	font-family: "Courier New", Courier, monospace;
+	line-height: 1.2;
+}
+
+strong {
+	font-weight: bold;	
+}
+
+cite {
+	font-style: italic;	
+}
+
+dd {
+	margin-top: 10px;
+}
+
+dd + dd {
+	margin-top: 10px;	
+}
+
+dt {
+	margin-top: 30px;	
+}
+
+code {
+	font-size: 16px;
+	color: #009;
+}
+
+.list_numbers {
+	list-style-type: decimal;	
+}
+
+/* End typograophy styles */

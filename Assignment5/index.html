@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Assignment 5</title>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+</head>
+
+<body class="f_49">
+<div class="wrapper">
+    <div class="box_main">
+        <header>
+            <h1>Assignment 5</h1>
+            <h2>Edward Lambke</h2>
+            <h4>yes this is the webstorage demo html</h4>
+        </header>
+        <section>
+
+            <div class="box_07">
+                <h2>Enter Data and Save Data</h2>
+
+                <form class="form_web_storage_data">
+
+                    <label for="input_body_colour">Enter the background colour of body:</label>
+                    <input type="text" id="input_body_colour" class="input_body_colour">
+
+                    <label for="input_content_colour">Enter the background color of the content area:</label>
+                    <input type="text" id="input_content_colour" class="input_content_colour">
+
+                    <label for="input_text_colour">Enter the color of the text:</label>
+                    <input type="text" id="input_text_colour" class="input_text_colour">
+
+                    <input type="button" value="Save Data" id="btn_save">
+                    <input type="button" value="Remove Data" id="btn_data">
+
+                </form>
+
+
+            </div><!-- end box_07 -->
+
+            <div class="box_08">
+                <h2>Data from Web Storage</h2>
+
+                <p>body bg color = <span id="body_color_data"></span></p>
+
+                <p>content bg color = <span id="content_color_data"></span></p>
+
+                <p>text color = <span id="text_color_data"></span></p>
+
+            </div><!-- end box_07 -->
+
+            <div class="clear">
+            </div><!-- end clear -->
+
+        </section>
+        <footer>
+        </footer>
+    </div><!-- end box_main -->
+</div><!-- end wrapper -->
+<script src="scripts/prism.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="scripts/jquery.cookie.js"></script>
+<script src="scripts/scripts_web_storage_demo.js"></script>
+</body>
+</html>

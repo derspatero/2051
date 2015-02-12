@@ -1,0 +1,20 @@
+@charset "utf-8";
+/* CSS Document */
+
+.image_container:-webkit-full-screen img {
+    display: block;
+}
+
+.image_container:-moz-full-screen img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.image_container:-ms-fullscreen img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
