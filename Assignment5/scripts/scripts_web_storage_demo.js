@@ -23,7 +23,6 @@ $btnSave.click(function(){
 
 })
 
-
 $btnRemoveData.click(function(){
     localStorage.clear();
     init();

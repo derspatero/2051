@@ -1,0 +1,1155 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>36 - Ajax - In Class Exercise 01</title>
+<link rel="stylesheet" type="text/css" href="styles/styles.css">
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+<body class="f_09">
+<div class="wrapper">
+  <div class="box_main">
+    <header>
+      <h1>Ajax In Class Exercise 01</h1>
+    </header>
+    <section>
+    <h2>Instructions</h2>
+    <p>Make an Ajax request when the button is clicked that requests the text file fruits.txt and outputs the fruit items as an HTML list</p>
+    <p>The fruits.txt file is located in the data folder.</p>
+    <p>Use Firefox if you are testing this using the local file system.</p>
+    <p><strong>Hint:</strong> Use the javaScript split() method to help with parsing the raw text file</p>
+    <hr />
+    <h2>Exercise Output</h2>
+    
+    <button id="btn">Click to Get Data</button>
+    
+    <div id="output" class="output">
+    </div><!-- end of output --> 
+   
+    </section>
+    <footer>
+    </footer>
+  </div><!-- end box_main -->
+</div><!-- end wrapper -->
+
+<script>
+
+var btn = document.getElementById('btn');    
+var output = document.getElementById('output');
+var loadingGif = '<img src="images/ajax_loader.gif" alt="loader">';
+
+btn.addEventListener('click', function(){
+	request('data/text/fruits.txt');	
+}, false);
+
+function request(url){
+	
+	var xhr = new XMLHttpRequest();
+		
+	xhr.onreadystatechange = function(){
+		
+		if(xhr.readyState === 4 && xhr.status === 200){
+			
+			var arrayOfFruits = xhr.responseText.split(',');
+			output.innerHTML = outputArrayAsList(arrayOfFruits);	
+				
+		} // end if	
+	} // end onreadystatechange event listener
+	
+	xhr.open('GET', url, true);
+
+	xhr.send();
+
+	output.innerHTML = loadingGif;
+	
+} // end request
+
+function outputArrayAsList(array){
+	
+	var aLength = array.length
+	var list = '<ul>';
+	
+	for(var i = 0; i < aLength; i++){
+		list += '<li>' + array[i] + '</li>';	
+	}
+	
+	list += '</ul>'; 
+	
+	return list;
+	
+} // end outputArrayAsList
+
+</script>
+</body>
+</html>
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>42 - Ajax - In Class Exercise 02</title>
+<link rel="stylesheet" type="text/css" href="styles/styles.css">
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+<body class="f_41">
+<div class="wrapper">
+  <div class="box_main">
+    <header>
+      <h1>Ajax In Class Exercise 02</h1>
+    </header>
+    <section>
+    <h2>Instructions</h2>
+    <p>Using Ajax and jQuery's load method, dynamically load in each speakers info when the corresponding button is clicked.</p>
+    
+    <p>Use the custom built "getIdValue(el)" function to get the id attribute from element that was clicked on.</p>
+    
+    <hr />
+    
+    <div class="output_speakers">
+    
+    	<h2>This Years Speakers</h2>
+        
+        <nav class="nav_01">
+          <ul>
+            <li><a href="data/html/speakers.html#jeffrey_toobin" title="toobin"><span>January</span><br>Jeffrey Toobin</a></li>
+            <li><a href="data/html/speakers.html#andrew_ross_sorkin" title="sorkin"><span>February</span><br>Andrew Ross Sorkin</a></li>
+            <li><a href="data/html/speakers.html#amy_chua" title="chua"><span>March</span><br>Amy Chua</a></li>
+          </ul>
+		</nav>
+        
+        <div id="speaker_info" class="speaker_info">
+			<article>
+            	<h1>The Supreme Nine: Black Robed Secrets</h1>
+                <time datetime="2014-01-15">January 15, 2014</time>
+                <h2>Jeffrey Toobin</h2>
+                <img src="images/toobin.jpg" alt="Jeffrey Toobin"/>
+                <p>Author of the critically acclaimed best seller, The Nine: Inside the Secret World of the Supreme Court, Jeffrey Toobin brings the inside story of one of America's most mysterious and powerful institutions to the Saroyan stage. At the podium, Toobin is an unbiased, deeply analytic expert on American law, politics and procedure and he provides a unique look into the inner workings of the Supreme Court and its influence.</p>
+            </article>        
+        </div>
+    
+    </div><!-- end output_speakers -->
+    <div class="clear">
+    </div><!-- end clear -->
+    </section>
+    <footer>
+    </footer>
+  </div><!-- end box_main -->
+</div><!-- end wrapper -->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+// Nav Links
+var $navLinks = $('.nav_01 a');
+var $loadContainer = $('#speaker_info');
+
+$navLinks.click(function(e){
+	
+	// Prevent default browser loading of HTML page
+	e.preventDefault();
+	
+	// Get the link that was clicked on...
+	var $this = $(this);
+		
+	// Get the ID portion of href attribute value
+	var idValue = getIdValue($this);
+	
+	$loadContainer.fadeOut(300, function(){
+		$loadContainer.load('data/html/speakers.html' + ' ' + idValue, function(){
+			$loadContainer.fadeIn(300);	
+		})
+	})
+	
+});
+
+// Get id value from a href value function
+function getIdValue(el){
+  stringArray = el.attr('href').split('#');
+  return '#' + stringArray[1];
+}; 
+</script>
+</body>
+</html>
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>52 - In Class Exercise - Flickr Feed</title>
+<link rel="stylesheet" type="text/css" href="styles/styles.css">
+</head>
+
+<body class="f_49">
+<div class="wrapper">
+  <div class="box_main">
+    <header>
+      <h1>In-Class Exercise - Flickr Feed</h1>
+    </header>
+    <section>
+    <p>Find a flickr feed and display its photos to the screen with a JSONP request.</p>
+    
+    <p>Use either a group feed (as we did in the previous example) or an individuals public feed. You can find the url's for various feed types at <a href="http://www.flickr.com/services/feeds/">http://www.flickr.com/services/feeds/</a></p>
+    
+    <p>To get the id number of a flickr feed visit <a href="http://idgettr.com/">http://idgettr.com/</a> and enter the feed URL.</p>
+    
+    <h2>Bonus</h2>
+    
+    <p>Use a mustache template to create an HTML template for the flickr pictures.</p>
+    
+    <button class="button secondary mb_30px">Get Pictures</button>
+    
+    <div id="output" class="output">
+        
+    </div><!-- end output -->
+    <div class="clear">
+    </div><!-- end clear -->
+    </section>
+    <footer>
+    </footer>
+  </div><!-- end box_main -->
+</div><!-- end wrapper -->
+<script id="flickr_template" type="text/template">
+	<h2>{{title}}</h2>
+	{{#items}}
+	   <div class="flickr_image_box">
+      	<a href="{{link}}"><img class="flickr_image" src="{{media.m}}"></a>
+      </div><!-- end flickr_image_box -->
+	{{/items}}
+</script>
+<script src="scripts/prism.js"></script>
+<script src="scripts/mustache.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+var $btn = $('button');
+var $output = $('#output');
+
+var url = 'http://api.flickr.com/services/feeds/photos_public.gne';
+var id = '51035555243@N01'
+var jsonFormat = '&format=json&jsoncallback=?'
+
+var flickrAjaxURL = url + '?id=' + id + jsonFormat;
+
+
+$btn.click(function(){
+	
+	$.getJSON(flickrAjaxURL, function(data){
+		var template = $('#flickr_template').html();
+		var html = Mustache.to_html(template, data);
+		$output.html(html);	
+	});
+	
+});
+
+
+
+</script>
+</body>
+</html>
+
+***********************
+WEBWORKERS
+***********************
+
+<script type="text/javascript">
+
+var btn = document.getElementById('btn_01');
+var out = document.getElementById('output');
+
+btn.addEventListener('click', function(){
+	
+	if(Worker){
+		
+		var worker = new Worker('scripts/script_worker.js');
+		
+		// send the worker script a message
+		worker.postMessage([3, 5]);
+		
+		// create an event listener that listens for a reply message
+		// from the worker script
+		worker.addEventListener('message', function(e){
+			
+			// This code will run once a message has been
+			// received from the worker script
+			
+			console.log('Data from worker: ' + e.data);
+			
+			// clear the loader gif from the output 
+			// div
+			out.innerHTML = e.data;
+			
+			// process the returned data...
+			// the returned data is in the event object
+			// stored under the data property
+			
+		
+		}, false);
+		
+	}else{
+		alert('Web workers not supported...');	
+	}	
+	
+}, false)
+
+</script>
+
+
+*************************
+FULL SCREEN
+************************* 
+
+<script type="text/javascript">
+
+var fullscreenAvailable = false;
+var container = document.getElementById('image_container');
+
+// Test to see if
+// full-screen is available
+if(
+  document.fullscreenEnabled || 
+  document.webkitFullscreenEnabled || 
+  document.mozFullScreenEnabled ||
+  document.msFullscreenEnabled
+){
+  fullscreenAvailable = true;
+}
+
+// Enter full-screen mode when btn01 
+// is clicked...
+container.addEventListener('click', function(){
+
+    if(fullscreenAvailable){
+        launchFullscreen(container);    
+    }else{
+        alert('Sorry, fullscreen not available...');      
+    }
+
+}, false);
+
+// Helper function to handle 
+// all the cross-browser differences 
+// for entering full-screen mode
+function launchFullscreen(element) {
+
+    if(element.requestFullscreen) {
+        element.requestFullscreen();
+    } else if(element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+    } else if(element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+    } else if(element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+    }
+
+}
+
+</script>
+
+
+*********************
+COOKIES
+*********************
+
+<script type="text/javascript">
+
+
+var output = document.getElementById('output');
+
+// Create a basic cookie...
+
+// Note: by default this cookie will expire when the browser is closed...
+
+// Create a cookie that will expire when the browser is closed
+document.cookie='myFirstCookie=Yummy cookie;';
+
+// Create a cookie that expires in the future
+// The time has to be encoded in UTC or GMT time
+document.cookie='username=Michael; expires=Thu, 18 Dec 2014 12:00:00 GMT;';
+
+// Create a cookie that is accessible to all pages on the same domain
+document.cookie='bgColor=#FF0000; expires=Thu, 18 Dec 2014 12:00:00 GMT; path=/;';
+
+// Read all the cookies on this page...
+var allCookieData = document.cookie;
+
+output.innerHTML = '<p>' + allCookieData + '</p>';
+
+var output = document.getElementById('output');
+
+// Delete a cookie
+
+// Delete a cookie by setting its expiry to a time in the past
+document.cookie='bgColor=; expires=Thu, 18 Dec 2013 12:00:00 GMT; path=/;';
+
+// Read all the cookies on this page...
+var allCookieData = document.cookie;
+
+output.innerHTML = '<p>' + allCookieData + '</p>';
+
+// JavaScript Document
+
+var output = document.getElementById('output');
+
+createCookie('font', 'Verdana', 365);
+createCookie('city', 'Vancouver', 365);
+createCookie('province', 'BC', 365);
+
+var city = readCookie('city');
+var province = readCookie('province');
+
+eraseCookie('font');
+
+output.innerHTML = '<p>The city cookie\'s value is: ' + city + ' and the province cookie\'s value is: ' + province; 
+
+
+// The following functions are from code found on this article:
+
+// http://www.sitepoint.com/how-to-deal-with-cookies-in-javascript/
+
+// Cookie functions
+
+// Create a Cookie
+function createCookie(name,value,days) {
+  if (days) {
+    var date = new Date();
+    date.setTime(date.getTime()+(days*24*60*60*1000));
+    var expires = "; expires="+date.toGMTString();
+  }
+  else var expires = "";
+  document.cookie = name+"="+value+expires+"; path=/";
+}
+
+// Read a Cookie
+function readCookie(name) {
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(';');
+  for(var i=0;i < ca.length;i++) {
+    var c = ca[i];
+    while (c.charAt(0)==' ') c = c.substring(1,c.length);
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+  }
+  return null;
+}
+
+// Delete a Cookie
+function eraseCookie(name) {
+  createCookie(name,"",-1);
+}
+
+// JavaScript Document
+
+var $output = $('#output');
+
+// The following code utilizes the jquery-cookie jQuery plugin
+
+// You can download the plugin here: https://github.com/carhartl/jquery-cookie/tree/v1.4.0
+
+// Create cookies
+$.cookie('color', '#00FF00', { expires: 365, path: '/' });
+$.cookie('bgColor', '#FF0000', { expires: 365, path: '/' });
+
+// Read a cookie
+var color = $.cookie('color');
+
+// Delete a cookie
+$.removeCookie('bgColor', {path: '/'});
+
+// Read all cookies
+var allCookies = $.cookie();
+
+// loop through all the cookies and create a list
+var cookiesAsAList = '<ul>';
+$.each(allCookies, function(cookie, value){
+	cookiesAsAList += '<li>' + cookie + ': ' + value + '</li>';	
+});
+cookiesAsAList += '</ul>';
+
+// Output the list
+$output.html(cookiesAsAList);
+
+// View all cookies as a list
+
+
+
+
+console.log(allCookies);
+
+</script>
+
+********************
+WEBSTORAGE
+********************
+
+<script type="text/javascript">
+
+// JavaScript Document
+
+var $inputSessionData = $('#input_session_data');
+var $inputStorageData = $('#input_storage_data');
+var $btnSave = $('#btn_save');
+var $btnRemoveSessionData = $('#btn_remove_session_data');
+var $btnRemoveStorageData = $('#btn_remove_storage_data');
+
+var $sessionOut = $('#out_session_data');
+var $storageOut = $('#out_storage_data');
+
+init();
+
+$btnSave.click(function(){
+	
+	var sessionData = $inputSessionData.val();
+	var storageData = $inputStorageData.val();
+	
+	sessionStorage.setItem('sessionItem', sessionData);
+	localStorage.setItem('storageItem', storageData);
+	
+	init();
+			
+})
+
+$btnRemoveSessionData.click(function(){
+	sessionStorage.clear();
+	init();	
+})
+
+$btnRemoveStorageData.click(function(){
+	localStorage.clear();
+	init();	
+})
+
+function init(){
+
+	sessionItem = sessionStorage.getItem('sessionItem');
+	storageItem = localStorage.getItem('storageItem')
+
+	if(sessionItem){
+		$sessionOut.html(sessionItem);	
+	}else {
+		$sessionOut.html('No Data Set');	
+	}
+	
+	if(storageItem){
+		$storageOut.html(storageItem);	
+	}else {
+		$storageOut.html('No Data Set');	
+	}
+		
+}
+
+</script>
+
+**********************
+OBJECT PROTOTYPE
+**********************
+
+
+<script type="text/javascript">
+
+// JavaScript Document
+
+// Global Variables
+var $selectAccountInput = $('#select_account');
+var $selectAction		= $('#select_action');
+var $amount       		= $('#amount');
+var $submit             = $('input[type="submit"]');
+var $balanceHeading		= $('.balance_heading');
+var $outBalance			= $('#out_balance');
+
+// BankAccount Object
+function BankAccount (accountNumber, type){
+	
+	var balance = 0;
+	
+	this.accountNumber = accountNumber;
+	this.type = type;
+	
+	this.deposit = function(amount){
+		
+		var depositAmount = false;
+		
+		depositAmount = validateAmount(amount);
+		
+		if(depositAmount != false){
+			balance = balance + depositAmount;
+		}
+	
+	};
+	
+	this.withdrawal = function(amount){
+		
+		var withdrawalAmount = false;
+	
+		withdrawalAmount = validateAmount(amount);
+		
+		if(withdrawalAmount != false){
+		
+			//balance = balance + withdrawalAmount;
+			if(withdrawalAmount > balance){
+				alert('Insufficient funds, please withdraw a lower amount.');	
+			}else{
+				balance = balance - withdrawalAmount;
+			}
+	
+		}	
+	
+	}
+	
+	this.getBalance = function(){
+		return balance;	
+	}
+	
+	this.updateAccount = function(action, amount){
+		
+		if(action === 'Deposit'){
+		
+		  if(amount != ''){
+			  this.deposit(amount);
+			  $amount.val('');
+		  }
+		
+		}else if(action === 'Withdrawal'){
+			
+			if(amount != ''){
+				this.withdrawal(amount);
+				$amount.val('');
+			}
+			
+		}
+		
+	}
+	
+	function validateAmount(amount){
+		
+		/*
+		
+		This breakdown of a regular expression from:
+		
+http://stackoverflow.com/questions/308122/simple-regular-expression-for-a-decimal-with-a-precision-of-2
+		
+		
+		^               # Start of string.
+		[0-9]+          # Must have one or more numbers.
+		(               # Begin optional group.
+    	\.              # The decimal point, . must be escaped, 
+                    	# or it is treated as "any character".
+    	[0-9]{1,2}      # One or two numbers.
+		)?              # End group, signify it's optional with ?
+		$               # End of string.
+		
+		*/
+		
+		// returns true or false depending if the regular expression
+		// matches or not
+		var isValid = amount.search(/^[0-9]+(\.[0-9]{2})?$/) >= 0;
+
+		if(isValid){
+			amount = Number(amount);
+		}else{
+			alert('Please enter a dollar amount in a valid format. Example (1000.00 or 1000)');
+			return false;	
+		}
+		
+		return amount;
+	}
+		
+} // End Bank Account Object
+
+var chequing = new BankAccount(12345, 'Chequing');
+var savings = new BankAccount(12346, 'Savings');
+
+// Event listeners...
+
+// Click event
+$submit.click(function(e){
+
+	e.preventDefault();
+	
+	var selectAccountValue = $selectAccountInput.val();
+	var selectActionValue = $selectAction.val();
+	var amountValue = $amount.val();
+	
+	if(selectAccountValue === 'Chequing'){
+		
+		updateAccountOnClick(chequing, selectActionValue, amountValue);
+	
+	}else if(selectAccountValue === 'Savings'){
+		
+		updateAccountOnClick(savings, selectActionValue, amountValue);
+	
+	}
+		
+});
+
+// Change event
+$selectAccountInput.change(function() {
+    
+	var selectAccountValue = $selectAccountInput.val();
+	
+	if(selectAccountValue === 'Chequing'){
+		
+		updateBalanceOutOnChange(chequing);
+	
+	}else if(selectAccountValue === 'Savings'){
+		
+		updateBalanceOutOnChange(savings);
+	
+	}
+	
+});
+
+// Updating Account functions
+function updateAccountOnClick(account, action, amount){
+	$balanceHeading.text('Balance ' + account.type);
+	account.updateAccount(action, amount);
+	var newBalance = account.getBalance();
+	$outBalance.text((Number(newBalance).toMoney(2, '.', ',')));
+}
+
+function updateBalanceOutOnChange(account){
+	$balanceHeading.text('Balance ' + account.type);
+	var newBalance = account.getBalance();
+	$outBalance.text((Number(newBalance).toMoney(2, '.', ',')));
+}
+
+// Add addtional functionality to the JavaScript Number() method
+
+// Code below is modified from code found at:
+
+// http://stackoverflow.com/questions/149055/how-can-i-format-numbers-as-money-in-javascript
+
+// Michael Whyte - Modified Output to include a '$' at the start of the returned formatted number 
+
+// Formats a number into a currency format
+
+/* 
+decimal_sep: character used as deciaml separtor, it defaults to '.' when omitted
+thousands_sep: char used as thousands separator, it defaults to ',' when omitted
+*/
+Number.prototype.toMoney = function(decimals, decimal_sep, thousands_sep) {
+	 
+   var n = this,
+   c = isNaN(decimals) ? 2 : Math.abs(decimals), //if decimal is zero we must take it, it means user does not want to show any decimal
+   d = decimal_sep || '.', //if no decimal separator is passed we use the dot as default decimal separator (we MUST use a decimal separator)
+
+   /*
+   according to [http://stackoverflow.com/questions/411352/how-best-to-determine-if-an-argument-is-not-sent-to-the-javascript-function]
+   the fastest way to check for not defined parameter is to use typeof value === 'undefined' 
+   rather than doing value === undefined.
+   */   
+   t = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep, //if you don't want to use a thousands separator you can pass empty string as thousands_sep value
+
+   sign = (n < 0) ? '-' : '',
+
+   //extracting the absolute value of the integer part of the number and converting to string
+   i = parseInt(n = Math.abs(n).toFixed(c)) + '', 
+
+   j = ((j = i.length) > 3) ? j % 3 : 0; 
+   return '$' + sign + (j ? i.substr(0, j) + t : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : ''); 
+   
+}
+
+</script>
+
+
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>16 - Basic Animation with jQuery</title>
+<link rel="stylesheet" type="text/css" href="styles/styles_animation_demos.css">
+</head>
+
+<body class="animation_with_jquery">
+<header>
+  <h1>Basic Animation with jQuery</h1>
+</header>
+
+<div class="box box_01 box_wide">
+  <h2>Basic Car Animation</h2>
+  <button class="button secondary btn_animate" id="btn_animate">Click to Animate</button>
+  <button class="button secondary btn_animate" id="btn_reset">Click to Reset</button>
+  <img src="images/green_car.png" width="190" height="84"  alt="green car" class="car" id="car"/>
+</div><!-- end box -->
+
+<hr />
+<div class="credits">
+  <p>Green car image from: <a href="http://mediaboxdam.com/clip-art-cars/5/29-cars-clip-art-cars-clipart-5-best-clip-art-blog/">http://mediaboxdam.com/clip-art-cars/5/29-cars-clip-art-cars-clipart-5-best-clip-art-blog/</a></p>
+</div><!-- end credits -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+
+var carImage = $('#car');
+var carOriginalCSSPositionLeft = carImage.css('left');
+var btnAnimate = $('#btn_animate');
+var btnReset = $('#btn_reset');
+
+
+btnAnimate.click(function(){
+
+	carImage.animate({
+		left: '+=500px'
+	}, 2000, 'linear')
+	
+})
+
+btnReset.click(function(){
+	carImage.animate({
+		left: carOriginalCSSPositionLeft	
+	}, 2000, 'swing');	
+})
+
+
+
+</script>
+</body>
+</html>
+
+************************
+CSS transistions
+************************
+
+<style type="text/css">
+
+
+@charset "utf-8";
+/* CSS Document */
+
+.box_50 {
+	width: 60px;
+	height: 60px;
+	margin-bottom: 60px;
+	margin-top: 60px;
+	margin-left: 60px;
+	cursor: pointer;
+	-webkit-transition: background-color 2s ease-in-out, -webkit-transform 2s ease-in-out;
+	transition: background-color 2s ease-in-out, -webkit-transform 2s ease-in-out;	
+}
+
+.box_50:hover {
+	background-color: #FAC4FC;
+	-webkit-transform: scale(1.5) rotate(10800deg);
+	transform: scale(1.5) rotate(10800deg);
+}
+
+</style>
+
+**********************
+CSS animations
+**********************
+<html>
+<head>
+<meta charset="utf-8">
+<title>20 - CSS Animation - Drop Ball</title>
+</head>
+
+<style>
+
+.box {
+	width: 300px;
+	height: 300px;
+	border: 2px solid #020FF9;
+	position: relative;	
+}
+
+.ball {
+	background-color: #ED0003;
+	border-radius: 15px;
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	left: 50%;
+	margin-left: -15px;	
+}
+
+.ball {
+	-webkit-animation: drop 2s ease-in 2s 2 alternate both;	
+	animation: drop 2s ease-in 2s 2 alternate both;	
+}
+
+@-webkit-keyframes drop {
+	0% {
+		top: 0;	
+	}
+	
+	100% {
+		top: 270px;	
+	}
+}
+
+@-webkit-keyframes drop {
+	0% {
+		top: 0;	
+	}
+	
+	100% {
+		top: 270px;	
+	}
+}
+
+</style>
+
+<body>
+
+<div class="box">
+  <div class="ball">
+  </div><!-- end ball -->
+</div><!-- end box -->
+
+</body>
+</html>
+
+
+
+/*----------------------------------------
+Animations
+*/
+
+<style type="text/css">
+.sun:hover {
+    -webkit-animation: spin linear 20s infinite;
+    animation: spin linear 20s infinite;
+}
+
+@-webkit-keyframes spin {
+    100% {
+        -webkit-transform: rotate(1turn);
+    }
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(1turn);
+    }
+}
+
+.cloud_01 {
+    -webkit-animation: float linear 50s infinite;
+    animation: float linear 50s infinite;
+}
+
+.cloud_02 {
+    -webkit-animation: float linear 60s infinite;
+    animation: float linear 60s infinite;
+}
+
+.cloud_03 {
+    -webkit-animation: float linear 70s infinite;
+    animation: float linear 70s infinite;
+}
+
+.cloud_04 {
+    -webkit-animation: float linear 80s infinite;
+    animation: float linear 80s infinite;
+}
+
+.cloud_05 {
+    -webkit-animation: float linear 90s infinite;
+    animation: float linear 90s infinite;
+}
+
+@-webkit-keyframes float {
+    0% {
+        opacity: 0;
+    }
+    23% {
+        left: 100%;
+        opacity: 100;
+    }
+    24% {
+        left: 100%;
+        opacity: 0;
+    }
+    25% {
+        left: -200px;
+        opacity: 0;
+    }
+    26% {
+        left: -200px;
+        opacity: 100;
+    }
+    64% {
+        left: 100%;
+        opacity: 100;
+    }
+    65% {
+        left: 100%;
+        opacity: 0;
+    }
+    66% {
+        left: -200px;
+        opacity: 0;
+    }
+    67% {
+        left: -200px;
+        opacity: 100;
+    }
+    100% {
+        left: 100%;
+        opacity: 100;
+    }
+}
+
+@keyframes float {
+    0% {
+        opacity: 0;
+    }
+    23% {
+        left: 100%;
+        opacity: 100;
+    }
+    24% {
+        left: 100%;
+        opacity: 0;
+    }
+    25% {
+        left: -200px;
+        opacity: 0;
+    }
+    26% {
+        left: -200px;
+        opacity: 100;
+    }
+    64% {
+        left: 100%;
+        opacity: 100;
+    }
+    65% {
+        left: 100%;
+        opacity: 0;
+    }
+    66% {
+        left: -200px;
+        opacity: 0;
+    }
+    67% {
+        left: -200px;
+        opacity: 100;
+    }
+    100% {
+        left: 100%;
+        opacity: 100;
+    }
+}
+</style>
+
+/*----------------------------------------
+End Animations
+*/
+
+<script type="text/javascript">
+
+function bankAccount(number, type) {
+    var self = this;
+
+    //initialize properties
+
+    self.accountNumber = number;
+    self.accountType = "";
+    self.balance = "0.00";
+
+    if (type == "chequing") {
+        self.accountType = "chequing";
+    }
+    else if (type == "savings") {
+        self.accountType = "savings";
+    }
+    else {
+        alert("Not a valid account type");
+    }
+
+    //functions
+
+    self.displayBalance = function(elementLocator){
+        $(elementLocator).html("$" + self.balance);
+    }
+
+    self.deposit = function(amount) {
+        if(isNaN(amount)) {
+            alert("Invalid entry");
+        }
+        else {
+            amount = parseFloat(amount);
+            self.balance = parseFloat(self.balance); //floating point 0.01 was being stored as 0.0099 causing problems during withdrawal
+            self.balance += amount;
+            self.balance = self.balance.toFixed(2); //deal with floating decimals
+            console.log("new balance: " + self.balance);
+        }
+    }
+
+    self.withdrawal = function(amount) {
+        if(isNaN(amount)) {
+            alert("Invalid entry");
+        }
+        else {
+            amount = parseFloat(amount);
+
+            console.log("amount: " + amount);
+            console.log("balance: " + self.balance);
+
+            if(amount > self.balance){
+                alert("Insufficient Funds")
+            }
+            else {
+                self.balance -= amount;
+                self.balance = self.balance.toFixed(2);  //deal with floating decimals
+                console.log("new balance: " + self.balance);
+            }
+        }
+    }
+}
+
+//initialization
+var savings = new bankAccount("A00892244", "savings");
+var chequing = new bankAccount("A00892244", "chequing");
+
+//display initial balance
+$("#account_name").html($("#account").val());
+window[$("#account").val()].displayBalance("#output");
+
+//Event handlers
+
+//submit button is pressed
+$("#submit").click(function(){
+    var account = $("#account").val();
+    var action = $("#action").val();
+    var amount = $("#amount").val();
+
+    //input validation
+    if (amount == "") {
+        alert("Please enter an amount")
+    }
+    else if (amount[0] == " "){
+        alert("Please do not enter blank spaces");
+    }
+    else if (amount.indexOf(".") < amount.length - 3) {
+        alert("Invalid format: please submit no more than 2 decimal places");
+    }
+    //passed validation. submit form
+    else {
+        window[account][action](amount);  //perform selected action on selected account
+        window[account].displayBalance("#output");  //update displayed balance
+    }
+});
+
+//account selector is changed
+$("#account").change(function (){
+    var account = $("#account").val();
+
+    $("#account_name").html(account);
+    window[account].displayBalance("#output");
+});
+
+</script>
+
+
+
+
+
+
+
+
+
+
