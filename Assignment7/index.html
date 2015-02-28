@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>81 - Google Maps API - Directions Application</title>
+<link rel="stylesheet" type="text/css" href="styles/styles.css">
+</head>
+
+<body class="f_82">
+<div class="wrapper">
+  <div class="box_main">
+    <header>
+      <h1>Google Maps API - Directions Application</h1>
+    </header>
+    <section>
+
+
+        <h2>Directions to BCIT Campuses</h2>
+
+        <div id="address">
+            <form>
+                Address:<br />
+                <input type="text" name="address" id="street">
+                <br />
+                City:<br>
+                <input type="text" name="city" id="city">
+                <br />
+                Province:<br />
+                <input type="text" name="province" id="province">
+            </form>
+        </div>
+
+
+            <select id="campuses">
+                <option value="BCIT Canada Way">Burnaby Campus</option>
+                <option value="BCIT Downtown Campus">Downtown Campus</option>
+                <option value="BCIT Marine Campus">Marine Campus</option>
+                <option value="BCIT Aerospace Technology Campus">Aerospace Technology Campus</option>
+                <option value="BCIT Annacis Island Campus">Annacis Island Campus</option>
+                <!--<option value="Satellite Locations">Satellite Locations</option>-->
+            </select>
+
+
+        <button type="button" id="get_direction">Get Directions</button>
+  
+    <h2>Click Map in Two Locations to get Directions</h2>
+           
+    <div class="container_map_application">		
+      
+      <button class="btn_clear" id="btn_clear">Clear Markers and Directions</button>
+           
+      <div id="map_03" class="map map_03">
+        
+      </div><!-- end map_03 -->
+      
+      <div id="output_directions" class="output_directions">
+        <h2>Directions</h2>
+        <div id="directions" class="directions">
+        </div><!-- end directions -->
+      </div><!-- output_directions -->
+     
+      <div class="clear">
+      </div><!-- end clear --> 
+       
+    </div><!-- end container_map_application -->
+                    
+    </section>
+    <footer>
+    </footer>
+  </div><!-- end box_main -->
+</div><!-- end wrapper -->
+<script src="scripts/prism.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script src="scripts/assignment7.js"></script>
+</body>
+</html>
