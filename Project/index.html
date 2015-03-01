@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Multi-page template</title>
+<!--   <link rel="stylesheet" href="http://code.jquery.com//css/themes/default/jquery.mobile-1.4.4.min.css">
+  <link rel="stylesheet" href="http://code.jquery.com//_assets/css/jqm-demos.css"> -->
+
+  <!-- <link rel="shortcut icon" href="http://code.jquery.com/favicon.ico"> -->
+<link rel="stylesheet" href="./js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="css/scorecard.css">
+<script src="./js/jquery-1.11.1.min.js"></script>
+<script src="./js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+
+<body>
+
+<div data-role="page" id="home">
+
+  <div data-role="header">
+    <h1></h1>
+  </div><!-- /header -->
+
+  <div role="main" class="ui-content">
+
+<!--                     <label for="text-basic">File name to write to:</label>
+                    <input id="file_name_input" type="text" name="text-basic" id="text-basic" value="">
+                    <label for="text-basic">Text to write to file:</label>
+                    <input id="file_text_input" type="text" name="text-basic" id="text-basic" value="">
+                    <button id="write_to_file_btn" class="ui-btn ui-shadow" onclick="savefile()">Write To File</button>
+
+                    <label for="text-basic">File name to read from:</label>
+                    <input id="read_file_name_input" type="text" name="text-basic" id="text-basic" value="">
+
+                    <button onclick="openfile();" class="ui-btn ui-shadow">Read From File</button>
+
+                    <div id="opened_file"></div>    
+
+                    <button id="write_to_file_btn" class="ui-btn ui-shadow" onclick="showdirectory('#file_directory','#opened_file')">Show Directory Contents</button>
+
+                    <div id="file_directory"></div> -->
+ 
+
+
+
+
+
+    <!-- <h3>Show internal pages:</h3> -->
+    <p><a href="#one" id="continuegame" class="ui-btn ui-shadow ui-corner-all">Continue Previous Game</a></p>
+    <p><a href="#setup" id="newgame" class="ui-btn ui-shadow ui-corner-all">Start New Game</a></p>
+<!--     <p><a href="#popup" class="ui-btn ui-shadow ui-corner-all" data-rel="dialog" data-transition="pop">Show page "popup" (as a dialog)</a></p> -->
+  </div><!-- /content -->
+
+  <div data-role="footer" data-theme="a">
+    <h4></h4>
+  </div><!-- /footer -->
+</div><!-- /page one -->
+
+
+<div data-role="page" id="setup">
+
+  <div data-role="header">
+    <h1></h1>
+  </div><!-- /header -->
+
+  <div role="main" class="ui-content">
+
+    <label for="text-basic">Player 1:</label>
+    <input name="text-basic" id="p1name" value="" type="text">
+
+    <label for="text-basic">Player 2:</label>
+    <input name="text-basic" id="p2name" value="" type="text">
+
+    <label for="text-basic">Player 3:</label>
+    <input name="text-basic" id="p3name" value="" type="text">
+
+    <label for="text-basic">Player 4:</label>
+    <input name="text-basic" id="p4name" value="" type="text">
+
+    <p><a href="#one" id="startgame" class="ui-btn ui-shadow ui-corner-all">Start Pitch and Putt Game</a></p>  
+    <p><a href="#one" id="startpar72game" class="ui-btn ui-shadow ui-corner-all">Start Full Course Game</a></p>  
+
+  </div><!-- /content -->
+
+  <div data-role="footer" data-theme="a">
+    <h4></h4>
+  </div><!-- /footer -->
+</div>
+
+
+
+<!-- Start of first page: #one -->
+<div data-role="page" id="one">
+
+  <div data-role="header">
+    <h1></h1>
+  </div><!-- /header -->
+
+  <div role="main" class="ui-content">
+
+
+    <table id="frontnine">
+
+    </table>
+
+
+    <table id="frontninetotals" class="totals_table">
+
+    </table>
+
+    <!-- <h3>Show internal pages:</h3> -->
+    <p><a href="#two" class="ui-btn ui-shadow ui-corner-all">View Back 9</a></p>
+<!--     <p><a href="#popup" class="ui-btn ui-shadow ui-corner-all" data-rel="dialog" data-transition="pop">Show page "popup" (as a dialog)</a></p> -->
+  </div><!-- /content -->
+
+  <div data-role="footer" data-theme="a">
+    <h4></h4>
+  </div><!-- /footer -->
+</div><!-- /page one -->
+
+<!-- Start of second page: #two -->
+<div data-role="page" id="two" data-theme="a">
+
+  <div data-role="header">
+    <h1>Two</h1>
+  </div><!-- /header -->
+
+
+
+  <div role="main" class="ui-content">
+
+
+
+
+    <table id="backnine">
+    </table>
+
+   <table id="backninetotals" class="totals_table">
+    </table>
+
+    <p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">View Front 9</a></p>
+
+  </div><!-- /content -->
+
+  <div data-role="footer">
+    <h4></h4>
+  </div><!-- /footer -->
+</div><!-- /page two -->
+
+<!-- Start of third page: #popup -->
+<div data-role="page" id="popup">
+
+  <div data-role="header" data-theme="b">
+    <!-- <h1></h1> -->
+  </div><!-- /header -->
+
+  <div role="main" class="ui-content">
+
+    <h2 id="scoreelement"></h2>
+
+    <label for="select-native-2"></label>
+    <select name="select-native-2" id="scoreselector">
+      <option value="1">1</option>
+      <option value="2">2</option> 
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option> 
+      <option value="6">6</option>
+    </select>
+
+<!--     <form id="scoreselector">
+        <fieldset data-role="controlgroup" data-type="vertical" >
+          <input type="radio" name="radio-choice-v-2" id="radio-choice-v-2a" value="1">
+          <label for="radio-choice-v-2a">1</label>
+          <input type="radio" name="radio-choice-v-2" id="radio-choice-v-2b" value="2">
+          <label for="radio-choice-v-2b">2</label>
+          <input type="radio" name="radio-choice-v-2" id="radio-choice-v-2c" value="3" checked="checked">
+          <label for="radio-choice-v-2c">3</label>
+          <input type="radio" name="radio-choice-v-2" id="radio-choice-v-2d" value="4">
+          <label for="radio-choice-v-2d">4</label>
+          <input type="radio" name="radio-choice-v-2" id="radio-choice-v-2e" value="5">
+          <label for="radio-choice-v-2e">5</label>
+          <input type="radio" name="radio-choice-v-2" id="radio-choice-v-2f" value="6">
+          <label for="radio-choice-v-2f">6</label>
+      </fieldset>
+    </form> -->
+
+
+
+<!--     <p>I have an id of "popup" on my page container and only look like a dialog because the link to me had a <code>data-rel="dialog"</code> attribute which gives me this inset look and a <code>data-transition="pop"</code> attribute to change the transition to pop. Without this, I'd be styled as a normal page.</p> -->
+    <p><a id="redirectbacktoscorecard" href="#one" data-rel="back" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-back ui-btn-icon-left scoreupdated">Done</a></p>
+  </div><!-- /content -->
+
+  <!-- <div data-role="footer">
+    <h4></h4>
+  </div> --><!-- /footer -->
+</div><!-- /page popup -->
+
+</body>
+
+<script type="text/javascript">
+    $("#continuegame").click(function(){
+        // alert("continue game");
+        continuegame();
+    });
+
+    $("#newgame").click(function(){
+        createblankscorecard();
+        
+    });
+
+
+
+
+    // function savefile(){
+    //     var fileName = $("#file_name_input").val();
+    //     var textToWrite = $("#file_text_input").val();
+    //     writeFile(fileName, textToWrite);
+    // }
+
+</script>
+
+<script type="text/javascript" src="cordova.js"></script>
+<script src="js/scorecard.js"></script>
+
+</html>
