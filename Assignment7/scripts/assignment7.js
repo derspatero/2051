@@ -3,11 +3,8 @@
 // Global Variables
 var mapOut = $('#map_03').get(0);
 var directionsOut = $('#directions').get(0);
-var $btnClear = $('#btn_clear');
 var map;
-var markers = [];
-var directionsService = new google.maps.DirectionsService();
-var directionsRenderer;
+
 
 
 $("#get_direction").click(function (){
@@ -49,23 +46,10 @@ function initMap(starting_address, campus){
                         zoom: 12
                     };
 
-                    var map = new google.maps.Map(mapOut, mapOptions);
+                    map = new google.maps.Map(mapOut, mapOptions);
 
                     createDirections(startpoint, endpoint);
 
-                    var marker01 = new google.maps.Marker({
-                        position: startpoint,
-                        map: map
-
-                    });
-
-                    //alert(campus);
-
-                    var marker01 = new google.maps.Marker({
-                        position: endpoint,
-                        map: map
-
-                    });
                 }
                 else {
                     alert('Geocode was not successful for the following reason: ' + status);
@@ -76,12 +60,6 @@ function initMap(starting_address, campus){
             alert('Geocode was not successful for the following reason: ' + status);
         }
     });
-
-
-
-
-
-
 
 } // end initMap
 
@@ -112,10 +90,10 @@ function createDirections(start, end){
 }
 
 
-// Clear markers
-google.maps.Map.prototype.clearMarkers = function() {
-    for (var i = 0; i < markers.length; i++ ) {
-        markers[i].setMap(null);
-    }
-    markers.length = 0;
-} // end Clear markers
+//// Clear markers
+//google.maps.Map.prototype.clearMarkers = function() {
+//    for (var i = 0; i < markers.length; i++ ) {
+//        markers[i].setMap(null);
+//    }
+//    markers.length = 0;
+//} // end Clear markers
