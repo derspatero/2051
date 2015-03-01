@@ -8,102 +8,86 @@ var map;
 var markers = [];
 var directionsService = new google.maps.DirectionsService();
 var directionsRenderer;
-var address = "953 Lamey's Mill Rd., Vancouver, BC, V6H 3P4, Canada";
-var campus;
+
 
 $("#get_direction").click(function (){
-    address = $("#street").val() + "," + $("#city").val() + ", " + $("#province").val();
-    campus = $("#campuses").val();
+    var starting_address = $("#street").val() + "," + $("#city").val() + ", " + $("#province").val();
+    var campus = $("#campuses").val();
 
-    //alert(campus);
-    initMap(campus);
+    initMap(starting_address, campus);
 });
 
-// Initialize the map
-//initMap();
-
-// Event Listeners
-
-//var mapClickListener = google.maps.event.addListener(map, 'click', function(e){
-//    createDirections(e);
-//});
-
-$btnClear.click(function(){
-
-    directionsRenderer.setMap(null);
-    directionsRenderer.setPanel(null);
-    mapClickListener = google.maps.event.addListener(map, 'click', function(e){
-        createDirections(e);
-    });
-
-});
 
 // Function for Creating a Google Map
-function initMap(campus){
+function initMap(starting_address, campus){
 
     $("#directions").html("");
 
-    // Set the element that will
-    // display the Google Map
-    // .get() = gets the html
-    // of a jQuery html element
+    var startpoint;
+    var endpoint;
 
     var geocoder = new google.maps.Geocoder();
-
-
-    // Run the geocode method to convert an address
-    // string into a geocode location
-    geocoder.geocode( { 'address': address}, function(results, status) {
-
-        // check if the geocode ran ok
+    geocoder.geocode( { 'address': starting_address}, function(results, status) {
         if(status == google.maps.GeocoderStatus.OK) {
+            startpoint = results[0].geometry.location;
+            //alert("start " + startpoint);
 
-            // get the location information of the
-            // address that was passed into the
-            // geocode method
-            var location = results[0].geometry.location;
-            var mapOptions = {
-                // location is an object with properties and methods
-                // location.lat() = a method that returns latitude
-                // location.lng() = a method that returns longitude
-                center: new google.maps.LatLng(location.lat(), location.lng()),
-                zoom: 12
-            };
+            geocoder.geocode( { 'address': campus}, function(results, status) {
+                if(status == google.maps.GeocoderStatus.OK) {
+                    endpoint = results[0].geometry.location;
 
-            var map = new google.maps.Map(mapOut, mapOptions);
+                    //alert("end " + endpoint);
 
-            //alert("yup");
-            createDirections(location);
+                    var midpointlat = (endpoint.lat() + startpoint.lat())/2;
+                    var midpointlng = (endpoint.lng() + startpoint.lng())/2;
 
-            var marker01 = new google.maps.Marker({
+                    var mapOptions = {
+                        // location is an object with properties and methods
+                        // location.lat() = a method that returns latitude
+                        // location.lng() = a method that returns longitude
+                        center: { lat: midpointlat, lng: midpointlng},
+                        zoom: 12
+                    };
 
-                position: location,
-                map: map
+                    var map = new google.maps.Map(mapOut, mapOptions);
 
+                    createDirections(startpoint, endpoint);
+
+                    var marker01 = new google.maps.Marker({
+                        position: startpoint,
+                        map: map
+
+                    });
+
+                    //alert(campus);
+
+                    var marker01 = new google.maps.Marker({
+                        position: endpoint,
+                        map: map
+
+                    });
+                }
+                else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
             });
-
-            alert(campus);
-
-            var marker01 = new google.maps.Marker({
-
-                position: campus,
-                map: map
-
-            });
-
-
-
-
-        } else {
+        }
+        else {
             alert('Geocode was not successful for the following reason: ' + status);
         }
-
     });
+
+
+
+
+
 
 
 } // end initMap
 
-function createDirections(location){
+
+
+function createDirections(start, end){
     // Create directions
     var directionsService = new google.maps.DirectionsService();
     var directionsRenderer = new google.maps.DirectionsRenderer();
@@ -111,39 +95,20 @@ function createDirections(location){
     // directionsOut is an HTML element
     directionsRenderer.setPanel(directionsOut);
 
-    var geocoder = new google.maps.Geocoder();
+    var request = {
+        origin: start,
+        destination: end,
+        travelMode: google.maps.TravelMode.DRIVING
+    }
 
-
-    // Run the geocode method to convert an address
-    // string into a geocode location
-    geocoder.geocode( { 'address': campus}, function(results, status) {
-
-        // check if the geocode ran ok
-        if(status == google.maps.GeocoderStatus.OK) {
-
-            // get the location information of the
-            // address that was passed into the
-            // geocode method
-            campus = results[0].geometry.location;
-
-            var request = {
-                origin: location,
-                destination: campus,
-                travelMode: google.maps.TravelMode.DRIVING
-            }
-            directionsService.route(request, function(result, status){
-                if(status == google.maps.DirectionsStatus.OK){
-                    directionsRenderer.setDirections(result);
-                }else {
-                    alert('Directions Service was not successful for the following reason: ' + status);
-                }
-            });
-            campus = results[0];
-        }
-        else {
-             alert('Geocode was not successful for the following reason: ' + status);
+    directionsService.route(request, function(result, status){
+        if(status == google.maps.DirectionsStatus.OK){
+            directionsRenderer.setDirections(result);
+        }else {
+            alert('Directions Service was not successful for the following reason: ' + status);
         }
     });
+
 }
 
 
