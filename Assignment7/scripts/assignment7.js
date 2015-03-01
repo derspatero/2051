@@ -5,8 +5,6 @@ var mapOut = $('#map_03').get(0);
 var directionsOut = $('#directions').get(0);
 var map;
 
-
-
 $("#get_direction").click(function (){
     var starting_address = $("#street").val() + "," + $("#city").val() + ", " + $("#province").val();
     var campus = $("#campuses").val();
@@ -88,12 +86,3 @@ function createDirections(start, end){
     });
 
 }
-
-
-//// Clear markers
-//google.maps.Map.prototype.clearMarkers = function() {
-//    for (var i = 0; i < markers.length; i++ ) {
-//        markers[i].setMap(null);
-//    }
-//    markers.length = 0;
-//} // end Clear markers
