@@ -1,0 +1,115 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="http://malsup.github.com/jquery.cycle2.js"></script>
+    <script src="http://malsup.github.io/jquery.cycle2.carousel.js"></script>
+    <script src="http://malsup.github.io/jquery.cycle2.tile.js"></script>
+    <style>
+        * { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+        #cycle-1 div { width:100%; }
+        #cycle-2 .cycle-slide { border:3px solid #fff; }
+        #cycle-2 .cycle-slide-active { border:3px solid #004; }
+
+        #slideshow-1,#slideshow-2 { width: 50%; max-width: 600px; margin: auto }
+        #slideshow-2 { margin-top: 10px }
+        .cycle-slideshow img { width: 100%; height: auto; display: block; }
+    </style>
+</head>
+<body>
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<h1>Edward Lambke COMP-2051 Assignment 8</h1>
+<!-- Add your site or application content here -->
+<div id="slideshow-1">
+    <p>
+        <a href="#" class="cycle-prev">&laquo; prev</a> | <a href="#" class="cycle-next">next &raquo;</a>
+        <span class="custom-caption"></span>
+    </p>
+    <div id="cycle-1" class="cycle-slideshow"
+         data-cycle-slides="> div"
+         data-cycle-timeout="5000"
+         data-cycle-prev="#slideshow-1 .cycle-prev"
+         data-cycle-next="#slideshow-1 .cycle-next"
+         data-cycle-caption="#slideshow-1 .custom-caption"
+         data-cycle-caption-template="Slide {{slideNum}} of {{slideCount}}"
+         data-cycle-fx="scrollHorz"
+         data-cycle-pause-on-hover="true"
+
+        >
+        <div><img src="http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2013/7/15/1373907091839/Tyrannosaurus-rex-or-T-re-008.jpg" width=500 height=500></div>
+        <div><img src="http://pmdvod.nationalgeographic.com/NG_Video/980/231/44209_1_1280x720_640x360_177546819636.jpg" width=500 height=500></div>
+        <div><img src="http://static.ddmcdn.com/gif/trex-was-predator-not-scavenger-130716-670x440.jpg" width=500 height=500></div>
+        <div><img src="http://img3.wikia.nocookie.net/__cb20130616163538/jurassicpark/images/7/7f/T-rex_female.jpg" width=500 height=500></div>
+        <div><img src="http://i.kinja-img.com/gawker-media/image/upload/s--HshDJ0Zj--/c_fit,fl_progressive,q_80,w_636/813266302148042132.jpg" width=500 height=500></div>
+
+    </div>
+</div>
+
+<div id="slideshow-2">
+    <div id="cycle-2" class="cycle-slideshow"
+         data-cycle-slides="> div"
+         data-cycle-timeout="5000"
+         data-cycle-prev="#slideshow-2 .cycle-prev"
+         data-cycle-next="#slideshow-2 .cycle-next"
+         data-cycle-caption="#slideshow-2 .custom-caption"
+         data-cycle-caption-template="Slide {{slideNum}} of {{slideCount}}"
+         data-cycle-fx="carousel"
+         data-cycle-carousel-visible="5"
+         data-cycle-carousel-fluid=true
+         data-allow-wrap="false"
+        >
+        <div><img src="http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2013/7/15/1373907091839/Tyrannosaurus-rex-or-T-re-008.jpg" width=100 height=100></div>
+        <div><img src="http://pmdvod.nationalgeographic.com/NG_Video/980/231/44209_1_1280x720_640x360_177546819636.jpg" width=100 height=100></div>
+        <div><img src="http://static.ddmcdn.com/gif/trex-was-predator-not-scavenger-130716-670x440.jpg" width=100 height=100></div>
+        <div><img src="http://img3.wikia.nocookie.net/__cb20130616163538/jurassicpark/images/7/7f/T-rex_female.jpg" width=100 height=100></div>
+        <div><img src="http://i.kinja-img.com/gawker-media/image/upload/s--HshDJ0Zj--/c_fit,fl_progressive,q_80,w_636/813266302148042132.jpg" width=100 height=100></div>
+
+    </div>
+
+
+</div>
+
+<script>
+    jQuery(document).ready(function($){
+
+        var slideshows = $('.cycle-slideshow').on('cycle-next cycle-prev', function(e, opts) {
+            // advance the other slideshow
+            slideshows.not(this).cycle('goto', opts.currSlide);
+        });
+
+        $('#cycle-2 .cycle-slide').click(function(){
+            var index = $('#cycle-2').data('cycle.API').getSlideIndex(this);
+            slideshows.cycle('goto', index);
+        });
+
+    });
+</script>
+
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<script>
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+</script>
+</body>
+</html>

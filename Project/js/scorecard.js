@@ -1,17 +1,19 @@
-var course = {}
+
 
 // var scoreformbuttonpt1 = '<select class="scoreselector" id="';
 var scoreformbuttonpt1 = '<select name="select-native-2" class="scoreselector" id="';
 var scoreformbuttonpt2 = '">';
 var scoreformbuttonpt3 = '<option value="0">0</option>';
 var scoreformbuttonpt4 = '</select>';
-
+var scorecard = new scoreCard();
 var scoreid;
 
+function continueGame() {
+    scorecard.continuegame();
+}
 
-
-function createblankscorecard(){
-	course = {
+function scoreCard() {
+    this.course = {
         "coursename": "Pitch and Putt",
         "date": "",
         "players": ["P1", "P2", "P3", "P4"],
@@ -38,7 +40,113 @@ function createblankscorecard(){
         "fronttotal": {"yd": 0, "par": 0, "playerscores": [0, 0, 0, 0]},
         "backtotal": {"yd": 0, "par": 0, "playerscores": [0, 0, 0, 0]},
         "total": {"yd": 0, "par": 0, "playerscores": [0, 0, 0, 0]},
+
     }
+
+    this.calculateScores = function() {
+
+        this.course.fronttotal.yd = 0;
+        this.course.fronttotal.par = 0;
+        this.course.fronttotal.playerscores[0] = 0;
+        this.course.fronttotal.playerscores[1] = 0;
+        this.course.fronttotal.playerscores[2] = 0;
+        this.course.fronttotal.playerscores[3] = 0;
+
+        for (i = 0; i < this.course.holes.length / 2; i++) {
+            this.course.fronttotal.yd += parseInt(this.course.holes[i].yd);
+            this.course.fronttotal.par += parseInt(this.course.holes[i].par);
+            this.course.fronttotal.playerscores[0] += parseInt(this.course.holes[i].playerscores[0]);
+            this.course.fronttotal.playerscores[1] += parseInt(this.course.holes[i].playerscores[1]);
+            this.course.fronttotal.playerscores[2] += parseInt(this.course.holes[i].playerscores[2]);
+            this.course.fronttotal.playerscores[3] += parseInt(this.course.holes[i].playerscores[3]);
+        }
+
+        this.course.backtotal.yd = 0;
+        this.course.backtotal.par = 0;
+        this.course.backtotal.playerscores[0] = 0;
+        this.course.backtotal.playerscores[1] = 0;
+        this.course.backtotal.playerscores[2] = 0;
+        this.course.backtotal.playerscores[3] = 0;
+
+        this.course.total.yd = 0;
+        this.course.total.par = 0;
+        this.course.total.playerscores[0] = 0;
+        this.course.total.playerscores[1] = 0;
+        this.course.total.playerscores[2] = 0;
+        this.course.total.playerscores[3] = 0;
+
+
+        for (i=9; i<this.course.holes.length; i++) {
+            this.course.backtotal.yd += parseInt(this.course.holes[i].yd);
+            this.course.backtotal.par += parseInt(this.course.holes[i].par);
+            this.course.backtotal.playerscores[0] += parseInt(this.course.holes[i].playerscores[0]);
+            this.course.backtotal.playerscores[1] += parseInt(this.course.holes[i].playerscores[1]);
+            this.course.backtotal.playerscores[2] += parseInt(this.course.holes[i].playerscores[2]);
+            this.course.backtotal.playerscores[3] += parseInt(this.course.holes[i].playerscores[3]);
+        }
+
+        for (i=0; i<this.course.holes.length; i++) {
+            this.course.total.yd += parseInt(this.course.holes[i].yd);
+            this.course.total.par += parseInt(this.course.holes[i].par);
+            this.course.total.playerscores[0] += parseInt(this.course.holes[i].playerscores[0]);
+            this.course.total.playerscores[1] += parseInt(this.course.holes[i].playerscores[1]);
+            this.course.total.playerscores[2] += parseInt(this.course.holes[i].playerscores[2]);
+            this.course.total.playerscores[3] += parseInt(this.course.holes[i].playerscores[3]);
+        }
+    }
+    this.setPlayerNames = function(p1name, p2name, p3name, p4name){
+        this.course.players[0] = p1name;
+        this.course.players[1] = p2name;
+        this.course.players[2] = p3name;
+        this.course.players[3] = p4name;
+    }
+
+    this.savefile = function () {
+        var textToWrite = JSON.stringify(scorecard.course);
+        localStorage.setItem('scorecard', textToWrite);
+
+    }
+
+    this.continuegame = function() {
+        scorecard.course = JSON.parse(localStorage.getItem('scorecard'));
+        createScoreCard();
+    }
+
+    this.createBlankPar72 = function() {
+        this.course = {
+            "coursename": "Real Golf!",
+            "players": ["P1", "P2", "P3", "P4"],
+            "holes": [
+                {"hole": 1, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0]},
+                {"hole": 2, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0]},
+                {"hole": 3, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0]},
+                {"hole": 4, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0]},
+                {"hole": 5, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0]},
+                {"hole": 6, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0]},
+                {"hole": 7, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0]},
+                {"hole": 8, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0]},
+                {"hole": 9, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0]},
+                {"hole": 10, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0]},
+                {"hole": 11, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0]},
+                {"hole": 12, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0]},
+                {"hole": 13, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0]},
+                {"hole": 14, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0]},
+                {"hole": 15, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0]},
+                {"hole": 16, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0]},
+                {"hole": 17, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0]},
+                {"hole": 18, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0]},
+            ],
+            "fronttotal": {"yd": 0, "par": 0, "playerscores": [0, 0, 0, 0]},
+            "backtotal": {"yd": 0, "par": 0, "playerscores": [0, 0, 0, 0]},
+            "total": {"yd": 0, "par": 0, "playerscores": [0, 0, 0, 0]},
+        }
+    }
+
+}
+
+
+function createblankscorecard(){
+
 	createScoreCard();
 }
 
@@ -53,6 +161,7 @@ Front 9 scorecard
 
 
 function createScoreCard() {
+    var course = scorecard.course;
 
 	$("h1").html(course.coursename);
 
@@ -157,9 +266,52 @@ function createScoreCard() {
 	*/
 
 
-	/*
-	START event handlers
-	*/
+
+    function updatebacktotals(){
+        var course = scorecard.course;
+
+        scorecard.calculateScores();
+
+        $("#backninetotals").html('<tr><td>Front</td><td>' +
+            // course.fronttotal.yd + '</td><td>' +
+            // course.fronttotal.par + '</td><td>' +
+        course.fronttotal.playerscores[0] + '</td><td>' + course.fronttotal.playerscores[1] + '</td><td>' +
+        course.fronttotal.playerscores[2] + '</td><td>' + course.fronttotal.playerscores[3] + '</td></tr>');
+
+
+        $("#backninetotals").append('<tr><td>Back</td><td>' +
+            // course.backtotal.yd + '</td><td>' +
+            // course.backtotal.par + '</td><td>' +
+        course.backtotal.playerscores[0] + '</td><td>' + course.backtotal.playerscores[1] + '</td><td>' +
+        course.backtotal.playerscores[2] + '</td><td>' + course.backtotal.playerscores[3] + '</td></tr>');
+
+        $("#backninetotals").append('<tr><td>Total</td><td>' +
+            // course.backtotal.yd + '</td><td>' +
+            // course.backtotal.par + '</td><td>' +
+        course.total.playerscores[0] + '</td><td>' + course.total.playerscores[1] + '</td><td>' +
+        course.total.playerscores[2] + '</td><td>' + course.total.playerscores[3] + '</td></tr>');
+
+    }
+
+    function updatefronttotals(){
+
+        var course = scorecard.course;
+
+        scorecard.calculateScores();
+
+
+        $("#frontninetotals").html('<tr><td>Front</td><td>' +
+            // course.fronttotal.yd + '</td><td>' +
+            // course.fronttotal.par + '</td><td>' +
+        course.fronttotal.playerscores[0] + '</td><td>' + course.fronttotal.playerscores[1] + '</td><td>' +
+        course.fronttotal.playerscores[2] + '</td><td>' + course.fronttotal.playerscores[3] + '</td></tr>');
+    }
+
+
+
+    /*
+    START event handlers
+    */
 
 
 	$(".scoreselector").change(function() {
@@ -180,7 +332,7 @@ function createScoreCard() {
 		// alert(scoreid + ": " + course.holes[holeindex].playerscores[playerindex]);
 		// alert("new score: " + score);
 
-	    course.holes[holeindex].playerscores[playerindex] = parseInt(score);
+	    scorecard.course.holes[holeindex].playerscores[playerindex] = parseInt(score);
 
 
 	    // alert(scoreid + ": " + course.holes[holeindex].playerscores[playerindex]);
@@ -188,54 +340,24 @@ function createScoreCard() {
 	    updatefronttotals();
 	    updatebacktotals();
 
-	    savefile();
+	    scorecard.savefile();
 
 	});
 
     $("#startgame").click(function(){
-        course.players[0] = $('#p1name').val();
-        course.players[1] = $('#p2name').val();
-        course.players[2] = $('#p3name').val();
-        course.players[3] = $('#p4name').val();
+        scorecard.setPlayerNames($('#p1name').val(),$('#p2name').val(),$('#p3name').val(),$('#p4name').val());
         createScoreCard();
         
     });
 
     $("#startpar72game").click(function(){
-    	course = {
-			"coursename":"Real Golf!",
-			"players":["P1","P2","P3","P4"],
-			"holes":[
-				{"hole":1,"yd":75,"par":5,"playerscores":[0,0,0,0]},
-				{"hole":2,"yd":75,"par":5,"playerscores":[0,0,0,0]},
-				{"hole":3,"yd":75,"par":5,"playerscores":[0,0,0,0]},
-				{"hole":4,"yd":75,"par":5,"playerscores":[0,0,0,0]},
-				{"hole":5,"yd":75,"par":5,"playerscores":[0,0,0,0]},
-				{"hole":6,"yd":75,"par":5,"playerscores":[0,0,0,0]},
-				{"hole":7,"yd":75,"par":5,"playerscores":[0,0,0,0]},
-				{"hole":8,"yd":75,"par":5,"playerscores":[0,0,0,0]},
-				{"hole":9,"yd":75,"par":5,"playerscores":[0,0,0,0]},
-				{"hole":10,"yd":75,"par":5,"playerscores":[0,0,0,0]},
-				{"hole":11,"yd":75,"par":5,"playerscores":[0,0,0,0]},
-				{"hole":12,"yd":75,"par":5,"playerscores":[0,0,0,0]},
-				{"hole":13,"yd":75,"par":5,"playerscores":[0,0,0,0]},
-				{"hole":14,"yd":75,"par":5,"playerscores":[0,0,0,0]},
-				{"hole":15,"yd":75,"par":5,"playerscores":[0,0,0,0]},
-				{"hole":16,"yd":75,"par":5,"playerscores":[0,0,0,0]},
-				{"hole":17,"yd":75,"par":5,"playerscores":[0,0,0,0]},
-				{"hole":18,"yd":75,"par":5,"playerscores":[0,0,0,0]},
-			],
-			"fronttotal":{"yd":0,"par":0,"playerscores":[0,0,0,0]},
-			"backtotal":{"yd":0,"par":0,"playerscores":[0,0,0,0]},
-			"total":{"yd":0,"par":0,"playerscores":[0,0,0,0]},
-		}
-        course.players[0] = $('#p1name').val();
-        course.players[1] = $('#p2name').val();
-        course.players[2] = $('#p3name').val();
-        course.players[3] = $('#p4name').val();
+        scorecard.createBlankPar72();
+        scorecard.setPlayerNames($('#p1name').val(),$('#p2name').val(),$('#p3name').val(),$('#p4name').val());
         createScoreCard();
         
     });
+
+
 
 /*
 END event handlers
@@ -247,98 +369,6 @@ END event handlers
 
 
 
-
-function updatebacktotals(){
-
-	course.backtotal.yd = 0;
-	course.backtotal.par = 0;
-	course.backtotal.playerscores[0] = 0;
-	course.backtotal.playerscores[1] = 0;
-	course.backtotal.playerscores[2] = 0;
-	course.backtotal.playerscores[3] = 0;
-
-	course.total.yd = 0;
-	course.total.par = 0;
-	course.total.playerscores[0] = 0;
-	course.total.playerscores[1] = 0;
-	course.total.playerscores[2] = 0;
-	course.total.playerscores[3] = 0;
-
-
-	for (i=9; i<course.holes.length; i++) {
-		course.backtotal.yd += parseInt(course.holes[i].yd);
-		course.backtotal.par += parseInt(course.holes[i].par);
-		course.backtotal.playerscores[0] += parseInt(course.holes[i].playerscores[0]);
-		course.backtotal.playerscores[1] += parseInt(course.holes[i].playerscores[1]);
-		course.backtotal.playerscores[2] += parseInt(course.holes[i].playerscores[2]);
-		course.backtotal.playerscores[3] += parseInt(course.holes[i].playerscores[3]);
-	}
-
-	for (i=0; i<course.holes.length; i++) {
-		course.total.yd += parseInt(course.holes[i].yd);
-		course.total.par += parseInt(course.holes[i].par);
-		course.total.playerscores[0] += parseInt(course.holes[i].playerscores[0]);
-		course.total.playerscores[1] += parseInt(course.holes[i].playerscores[1]);
-		course.total.playerscores[2] += parseInt(course.holes[i].playerscores[2]);
-		course.total.playerscores[3] += parseInt(course.holes[i].playerscores[3]);
-	}
-
-	$("#backninetotals").html('<tr><td>Front</td><td>' + 
-		// course.fronttotal.yd + '</td><td>' + 
-		// course.fronttotal.par + '</td><td>' + 
-		course.fronttotal.playerscores[0] + '</td><td>' + course.fronttotal.playerscores[1] + '</td><td>' + 
-		course.fronttotal.playerscores[2] + '</td><td>' + course.fronttotal.playerscores[3] + '</td></tr>');
-
-
-	$("#backninetotals").append('<tr><td>Back</td><td>' + 
-		// course.backtotal.yd + '</td><td>' + 
-		// course.backtotal.par + '</td><td>' + 
-		course.backtotal.playerscores[0] + '</td><td>' + course.backtotal.playerscores[1] + '</td><td>' + 
-		course.backtotal.playerscores[2] + '</td><td>' + course.backtotal.playerscores[3] + '</td></tr>');
-
-	$("#backninetotals").append('<tr><td>Total</td><td>' + 
-		// course.backtotal.yd + '</td><td>' + 
-		// course.backtotal.par + '</td><td>' + 
-		course.total.playerscores[0] + '</td><td>' + course.total.playerscores[1] + '</td><td>' + 
-		course.total.playerscores[2] + '</td><td>' + course.total.playerscores[3] + '</td></tr>');
-
-}
-
-function updatefronttotals(){
-
-	course.fronttotal.yd = 0;
-	course.fronttotal.par = 0;
-	course.fronttotal.playerscores[0] = 0;
-	course.fronttotal.playerscores[1] = 0;
-	course.fronttotal.playerscores[2] = 0;
-	course.fronttotal.playerscores[3] = 0;
-
-	for (i=0; i<course.holes.length/2; i++) {
-		course.fronttotal.yd += parseInt(course.holes[i].yd);
-		course.fronttotal.par += parseInt(course.holes[i].par);
-		course.fronttotal.playerscores[0] += parseInt(course.holes[i].playerscores[0]);
-		course.fronttotal.playerscores[1] += parseInt(course.holes[i].playerscores[1]);
-		course.fronttotal.playerscores[2] += parseInt(course.holes[i].playerscores[2]);
-		course.fronttotal.playerscores[3] += parseInt(course.holes[i].playerscores[3]);
-	}
-
-	$("#frontninetotals").html('<tr><td>Front</td><td>' + 
-		// course.fronttotal.yd + '</td><td>' + 
-		// course.fronttotal.par + '</td><td>' + 
-		course.fronttotal.playerscores[0] + '</td><td>' + course.fronttotal.playerscores[1] + '</td><td>' + 
-		course.fronttotal.playerscores[2] + '</td><td>' + course.fronttotal.playerscores[3] + '</td></tr>');
-}
-
-function savefile(){
-    var textToWrite = JSON.stringify(course);
-    localStorage.setItem('scorecard', textToWrite);
-
-}
-
-function continuegame() {
-    course = JSON.parse(localStorage.getItem('scorecard'));
-    createScoreCard();
-}
 
 
 
