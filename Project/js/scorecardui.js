@@ -45,9 +45,8 @@ $("#startpar72game").click(function(){
 
 
 function createScoreCard() {
-    var course = scorecard.course;
 
-    $("h1").html(course.coursename);
+    $("h1").html(scorecard.getCourseName());
 
 
     $("#frontnine").html("");
@@ -62,25 +61,25 @@ function createScoreCard() {
     $("#frontnine").append('<tr><th>hole</th><th>' +
         // 'yd</th><th>' +
         // 'par</th><th>' +
-    course.players[0] + '</th><th>' +
-    course.players[1] + '</th><th>' +
-    course.players[2] + '</th><th>' +
-    course.players[3] + '</th></tr>');
+    scorecard.getPlayerName(0) + '</th><th>' +
+    scorecard.getPlayerName(1) + '</th><th>' +
+    scorecard.getPlayerName(2) + '</th><th>' +
+    scorecard.getPlayerName(3) + '</th></tr>');
 
     var scorecardtable = "";
 
-    for (i=0; i<course.holes.length/2; i++) {
+    for (i=0; i<scorecard.getCourseLength()/2; i++) {
 
-        scorecardtable += '<tr><td>' + course.holes[i].hole + '</td>';
+        scorecardtable += '<tr><td>' + scorecard.getHoleNumber(i) + '</td>';
 
-        for (j=0; j<course.players.length; j++) {
+        for (j=0; j<scorecard.getNumberOfPlayers(); j++) {
 
             // alert("button i,j = " + i +"," + j);
 
             scorecardtable += '<td>' + scoreformbuttonpt1 + 'player_' + j + '_hole_' + i + scoreformbuttonpt2;
 
-            for (k=0; k<=course.holes[i].par * 2; k++){
-                if(course.holes[i].playerscores[j] == k){
+            for (k=0; k<=scorecard.getParForHole(i) * 2; k++){
+                if(scorecard.getPlayerScoreForHole(i,j) == k){
                     scorecardtable += '<option value="' + k + '" selected="selected">' + k + '</option>';
                     // alert('<option value="' + k + '" selected="selected">' + k + '</option>');
                 }
@@ -113,25 +112,25 @@ function createScoreCard() {
     $("#backnine").append('<tr><th>hole</th><th>' +
         // 'yd</th><th>' +
         // 'par</th><th>' +
-    course.players[0] + '</th><th>' +
-    course.players[1] + '</th><th>' +
-    course.players[2] + '</th><th>' +
-    course.players[3] + '</th></tr>');
+    scorecard.getPlayerName(0) + '</th><th>' +
+    scorecard.getPlayerName(1) + '</th><th>' +
+    scorecard.getPlayerName(2) + '</th><th>' +
+    scorecard.getPlayerName(3) + '</th></tr>');
 
     scorecardtable = "";
 
-    for (i=9; i<course.holes.length; i++) {
+    for (i=9; i<scorecard.getCourseLength(); i++) {
 
-        scorecardtable += '<tr><td>' + course.holes[i].hole + '</td>';
+        scorecardtable += '<tr><td>' + scorecard.getHoleNumber(i)+ '</td>';
 
-        for (j=0; j<course.players.length; j++) {
+        for (j=0; j<scorecard.getNumberOfPlayers(); j++) {
 
             // alert("button i,j = " + i +"," + j);
 
             scorecardtable += '<td>' + scoreformbuttonpt1 + 'player_' + j + '_hole_' + i + scoreformbuttonpt2;
 
-            for (k=0; k<=course.holes[i].par * 2; k++){
-                if(course.holes[i].playerscores[j] == k){
+            for (k=0; k<=scorecard.getParForHole(i) * 2; k++){
+                if(scorecard.getPlayerScoreForHole(i,j) == k){
                     scorecardtable += '<option value="' + k + '" selected="selected">' + k + '</option>';
                 }
                 else {
@@ -158,43 +157,39 @@ function createScoreCard() {
 
 
     function updatebacktotals(){
-        var course = scorecard.course;
 
         scorecard.calculateScores();
 
         $("#backninetotals").html('<tr><td>Front</td><td>' +
             // course.fronttotal.yd + '</td><td>' +
             // course.fronttotal.par + '</td><td>' +
-        course.fronttotal.playerscores[0] + '</td><td>' + course.fronttotal.playerscores[1] + '</td><td>' +
-        course.fronttotal.playerscores[2] + '</td><td>' + course.fronttotal.playerscores[3] + '</td></tr>');
+        scorecard.getFrontTotalForPlayer(0) + '</td><td>' + scorecard.getFrontTotalForPlayer(1) + '</td><td>' +
+        scorecard.getFrontTotalForPlayer(2) + '</td><td>' + scorecard.getFrontTotalForPlayer(3) + '</td></tr>');
 
 
         $("#backninetotals").append('<tr><td>Back</td><td>' +
             // course.backtotal.yd + '</td><td>' +
             // course.backtotal.par + '</td><td>' +
-        course.backtotal.playerscores[0] + '</td><td>' + course.backtotal.playerscores[1] + '</td><td>' +
-        course.backtotal.playerscores[2] + '</td><td>' + course.backtotal.playerscores[3] + '</td></tr>');
+        scorecard.getBackTotalForPlayer(0) + '</td><td>' + scorecard.getBackTotalForPlayer(1) + '</td><td>' +
+        scorecard.getBackTotalForPlayer(2) + '</td><td>' + scorecard.getBackTotalForPlayer(3) + '</td></tr>');
 
         $("#backninetotals").append('<tr><td>Total</td><td>' +
             // course.backtotal.yd + '</td><td>' +
             // course.backtotal.par + '</td><td>' +
-        course.total.playerscores[0] + '</td><td>' + course.total.playerscores[1] + '</td><td>' +
-        course.total.playerscores[2] + '</td><td>' + course.total.playerscores[3] + '</td></tr>');
+        scorecard.getTotalForPlayer(0) + '</td><td>' + scorecard.getTotalForPlayer(1) + '</td><td>' +
+        scorecard.getTotalForPlayer(2) + '</td><td>' + scorecard.getTotalForPlayer(3) + '</td></tr>');
 
     }
 
     function updatefronttotals(){
 
-        var course = scorecard.course;
-
         scorecard.calculateScores();
-
 
         $("#frontninetotals").html('<tr><td>Front</td><td>' +
             // course.fronttotal.yd + '</td><td>' +
             // course.fronttotal.par + '</td><td>' +
-        course.fronttotal.playerscores[0] + '</td><td>' + course.fronttotal.playerscores[1] + '</td><td>' +
-        course.fronttotal.playerscores[2] + '</td><td>' + course.fronttotal.playerscores[3] + '</td></tr>');
+        scorecard.getFrontTotalForPlayer(0) + '</td><td>' + scorecard.getFrontTotalForPlayer(1) + '</td><td>' +
+        scorecard.getFrontTotalForPlayer(2) + '</td><td>' + scorecard.getFrontTotalForPlayer(3) + '</td></tr>');
     }
 
 
@@ -219,13 +214,8 @@ function createScoreCard() {
 
         var playerindex = String(scoreid.split("_")[1]);
         var holeindex = String(scoreid.split("_")[3]);
-        // alert(scoreid + ": " + course.holes[holeindex].playerscores[playerindex]);
-        // alert("new score: " + score);
 
-        scorecard.course.holes[holeindex].playerscores[playerindex] = parseInt(score);
-
-
-        // alert(scoreid + ": " + course.holes[holeindex].playerscores[playerindex]);
+        scorecard.setPlayerScoreForHole(holeindex,playerindex,score);
 
         updatefronttotals();
         updatebacktotals();
