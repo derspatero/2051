@@ -120,124 +120,77 @@ function scoreCard() {
     /*
     COURSE TEMPLATES
      */
-    this.createBlankPar72 = function() {
-        this.course = {
-            "coursename": "Real Golf!",
-            "players": ["P1", "P2", "P3", "P4"],
-            "holes": [
-                {"hole": 1, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 2, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 3, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 4, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 5, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 6, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 7, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 8, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 9, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 10, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 11, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 12, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 13, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 14, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 15, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 16, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 17, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 18, "yd": 75, "par": 5, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-            ],
-            "fronttotal": {"yd": 0, "par": 0, "playerscores": [0, 0, 0, 0]},
-            "backtotal": {"yd": 0, "par": 0, "playerscores": [0, 0, 0, 0]},
-            "total": {"yd": 0, "par": 0, "playerscores": [0, 0, 0, 0]},
+    this.createPar72 = function() {
+        this.course.coursename = "Real Golf!";
+        for (var i=0; i <18; i++) {
+            this.course.holes[0].par = 5;
         }
     }
 
-    this.createBlankQueenElizabeth = function() {
-        this.course = {
-            "coursename": "Queen Elizabeth Pitch and Putt",
-            "players": ["P1", "P2", "P3", "P4"],
-            "holes": [
-                {"hole": 1, "yd": 70, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 2, "yd": 110, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 3, "yd": 65, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 4, "yd": 40, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 5, "yd": 85, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 6, "yd": 60, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 7, "yd": 90, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 8, "yd": 65, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 9, "yd": 75, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 10, "yd": 70, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 11, "yd": 65, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 12, "yd": 85, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 13, "yd": 80, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 14, "yd": 80, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 15, "yd": 110, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 16, "yd": 90, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 17, "yd": 50, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 18, "yd": 80, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-            ],
-            "fronttotal": {"yd": 0, "par": 0, "playerscores": [0, 0, 0, 0]},
-            "backtotal": {"yd": 0, "par": 0, "playerscores": [0, 0, 0, 0]},
-            "total": {"yd": 0, "par": 0, "playerscores": [0, 0, 0, 0]},
-        }
+    this.createQueenElizabeth = function() {
+        this.course.coursename = "Queen Elizabeth Pitch and Putt";
+        this.course.holes[0].yd = 70;
+        this.course.holes[1].yd = 110;
+        this.course.holes[2].yd = 65;
+        this.course.holes[3].yd = 40;
+        this.course.holes[4].yd = 85;
+        this.course.holes[5].yd = 60;
+        this.course.holes[6].yd = 90;
+        this.course.holes[7].yd = 65;
+        this.course.holes[8].yd = 75;
+        this.course.holes[9].yd = 70;
+        this.course.holes[10].yd = 65;
+        this.course.holes[11].yd = 85;
+        this.course.holes[12].yd = 80;
+        this.course.holes[13].yd = 80;
+        this.course.holes[14].yd = 110;
+        this.course.holes[15].yd = 90;
+        this.course.holes[16].yd = 50;
+        this.course.holes[17].yd = 80;
     }
 
-    this.createBlankStanleyPark = function() {
-        this.course = {
-            "coursename": "Stanley Park Pitch and Putt",
-            "players": ["P1", "P2", "P3", "P4"],
-            "holes": [
-                {"hole": 1, "yd": 43, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 2, "yd": 83, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 3, "yd": 66, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 4, "yd": 65, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 5, "yd": 86, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 6, "yd": 73, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 7, "yd": 60, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 8, "yd": 63, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 9, "yd": 51, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 10, "yd": 68, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 11, "yd": 49, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 12, "yd": 48, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 13, "yd": 65, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 14, "yd": 87, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 15, "yd": 43, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 16, "yd": 48, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 17, "yd": 47, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 18, "yd": 75, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-            ],
-            "fronttotal": {"yd": 0, "par": 0, "playerscores": [0, 0, 0, 0]},
-            "backtotal": {"yd": 0, "par": 0, "playerscores": [0, 0, 0, 0]},
-            "total": {"yd": 0, "par": 0, "playerscores": [0, 0, 0, 0]},
-        }
+    this.createStanleyPark = function() {
+        this.course.coursename = "Stanley Park Pitch and Putt";
+        this.course.holes[0].yd = 45;
+        this.course.holes[1].yd = 80;
+        this.course.holes[2].yd = 65;
+        this.course.holes[3].yd = 65;
+        this.course.holes[4].yd = 85;
+        this.course.holes[5].yd = 70;
+        this.course.holes[6].yd = 60;
+        this.course.holes[7].yd = 65;
+        this.course.holes[8].yd = 50;
+        this.course.holes[9].yd = 70;
+        this.course.holes[10].yd = 50;
+        this.course.holes[11].yd = 50;
+        this.course.holes[12].yd = 65;
+        this.course.holes[13].yd = 85;
+        this.course.holes[14].yd = 43;
+        this.course.holes[15].yd = 50;
+        this.course.holes[16].yd = 50;
+        this.course.holes[17].yd = 80;
     }
 
-    this.createBlankRupertPark = function() {
-        this.course = {
-            "coursename": "Rupert Park Pitch and Putt",
-            "players": ["P1", "P2", "P3", "P4"],
-            "holes": [
-                {"hole": 1, "yd": 70, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 2, "yd": 80, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 3, "yd": 75, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 4, "yd": 75, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 5, "yd": 80, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 6, "yd": 70, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 7, "yd": 65, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 8, "yd": 60, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 9, "yd": 55, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 10, "yd": 60, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 11, "yd": 70, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 12, "yd": 60, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 13, "yd": 60, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 14, "yd": 120, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 15, "yd": 70, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 16, "yd": 90, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 17, "yd": 95, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-                {"hole": 18, "yd": 70, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
-            ],
-            "fronttotal": {"yd": 0, "par": 0, "playerscores": [0, 0, 0, 0]},
-            "backtotal": {"yd": 0, "par": 0, "playerscores": [0, 0, 0, 0]},
-            "total": {"yd": 0, "par": 0, "playerscores": [0, 0, 0, 0]},
-        }
+    this.createRupertPark = function() {
+        this.course.coursename = "Rupert Park Pitch and Putt";
+        this.course.holes[0].yd = 70;
+        this.course.holes[1].yd = 70;
+        this.course.holes[2].yd = 75;
+        this.course.holes[3].yd = 75;
+        this.course.holes[4].yd = 80;
+        this.course.holes[5].yd = 70;
+        this.course.holes[6].yd = 65;
+        this.course.holes[7].yd = 60;
+        this.course.holes[8].yd = 55;
+        this.course.holes[9].yd = 60;
+        this.course.holes[10].yd = 70;
+        this.course.holes[11].yd = 60;
+        this.course.holes[12].yd = 50;
+        this.course.holes[13].yd = 120;
+        this.course.holes[14].yd = 70;
+        this.course.holes[15].yd = 90;
+        this.course.holes[16].yd = 95;
+        this.course.holes[17].yd = 70;
     }
 
     /*

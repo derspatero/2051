@@ -15,32 +15,56 @@ var scoreid;
  * SETUP SCREEN UI
  */
 
-function createblanksingleplayerscorecard() {
-    scorecard = new scoreCard();
-    createSinglePlayerScoreCard();
-}
 
 function continueGame() {
     scorecard.loadgame();
 }
 
 function createblankscorecard(){
-    scorecard = new scoreCard();
+    //scorecard = new scoreCard();
     createScoreCard();
 }
 
-$("#startgame").click(function(){
+$("#courseselector").change(function() {
+
+    if($(this).val() == 'par3') {
+        scorecard = new scoreCard();
+    }
+    if($(this).val() == 'par72') {
+        scorecard = new scoreCard();
+        scorecard.createPar72();
+        //alert(scorecard.getCourseName());
+    }
+    if($(this).val() == 'QE') {
+        scorecard = new scoreCard();
+        scorecard.createQueenElizabeth();
+    }
+    if($(this).val() == 'StanleyPark') {
+        scorecard = new scoreCard();
+        scorecard.createStanleyPark();
+    }
+    if($(this).val() == 'RupertPark') {
+        scorecard = new scoreCard();
+        scorecard.createRupertPark();
+    }
+});
+
+$("#newsinglegame").click(function(){
+    createSinglePlayerScoreCard();
+});
+
+$("#newgame").click(function(){
     scorecard.setPlayerNames($('#p1name').val(),$('#p2name').val(),$('#p3name').val(),$('#p4name').val());
     createScoreCard();
 
 });
 
-$("#startpar72game").click(function(){
-    scorecard.createBlankPar72();
-    scorecard.setPlayerNames($('#p1name').val(),$('#p2name').val(),$('#p3name').val(),$('#p4name').val());
-    createScoreCard();
-
-});
+//$("#startpar72game").click(function(){
+//    scorecard.createPar72();
+//    scorecard.setPlayerNames($('#p1name').val(),$('#p2name').val(),$('#p3name').val(),$('#p4name').val());
+//    createScoreCard();
+//
+//});
 
 
 /*

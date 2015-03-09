@@ -51,7 +51,6 @@
     <!-- <h3>Show internal pages:</h3> -->
     <p><a href="#one" id="continuegame" class="ui-btn ui-shadow ui-corner-all">Continue Previous Game</a></p>
     <p><a href="#setup" id="newgame" class="ui-btn ui-shadow ui-corner-all">Start New Game</a></p>
-      <p><a href="#one" id="newsinglegame" class="ui-btn ui-shadow ui-corner-all">Start New Single Player Game</a></p>
 
       <!--     <p><a href="#popup" class="ui-btn ui-shadow ui-corner-all" data-rel="dialog" data-transition="pop">Show page "popup" (as a dialog)</a></p> -->
   </div><!-- /content -->
@@ -82,8 +81,18 @@
     <label for="text-basic">Player 4:</label>
     <input name="text-basic" id="p4name" value="" type="text">
 
-    <p><a href="#one" id="startgame" class="ui-btn ui-shadow ui-corner-all">Start Pitch and Putt Game</a></p>  
-    <p><a href="#one" id="startpar72game" class="ui-btn ui-shadow ui-corner-all">Start Full Course Game</a></p>  
+
+      <label for="select-native-2"></label>
+      <select name="select-native-2" id="courseselector">
+          <option value="par3">Blank par 3</option>
+          <option value="par72">Blank par 72</option>
+          <option value="QE">Queen Elizabeth</option>
+          <option value="StanleyPark">Stanley Park</option>
+          <option value="RupertPark">Rupert Park</option>
+      </select>
+
+      <p><a href="#one" id="startgame" class="ui-btn ui-shadow ui-corner-all">Create 4 Player Scorecard</a></p>
+      <p><a href="#one" id="newsinglegame" class="ui-btn ui-shadow ui-corner-all">Create Detailed Single Player Scorecard</a></p>
 
   </div><!-- /content -->
 
@@ -206,15 +215,8 @@
         continueGame();
     });
 
-    $("#newgame").click(function(){
-        createblankscorecard();
 
-    });
 
-    $("#newsinglegame").click(function(){
-        createblanksingleplayerscorecard();
-
-    });
 
 
 </script>
