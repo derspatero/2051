@@ -15,6 +15,11 @@ var scoreid;
  * SETUP SCREEN UI
  */
 
+function createblanksingleplayerscorecard() {
+    scorecard = new scoreCard();
+    createSinglePlayerScoreCard();
+}
+
 function continueGame() {
     scorecard.loadgame();
 }
@@ -221,6 +226,199 @@ function createScoreCard() {
         updatebacktotals();
 
         scorecard.savegame();
+
+    });
+
+
+
+
+
+    /*
+     END event handlers
+     */
+
+
+
+}
+
+
+/*
+ Single player scorecard
+ */
+
+function createSinglePlayerScoreCard() {
+
+    $("h1").html(scorecard.getCourseName());
+
+
+    $("#frontnine").html("");
+    $("#backnine").html("");
+
+
+
+    /*
+     Front 9 scorecard
+     */
+
+    $("#frontnine").append('<tr><th>hole</th><th>par</th><th>yd</th><th>strokes</th><th>putts</th></tr>');
+
+    var scorecardtable = "";
+
+    for (i=0; i<scorecard.getCourseLength()/2; i++) {
+
+        scorecardtable += '<tr><td>' + scorecard.getHoleNumber(i) + '</td>'
+            + '<td>' + scorecard.getParForHole(i) + '</td>'
+            + '<td>' + scorecard.getYardageForHole(i) + '</td>';
+
+
+        scorecardtable += '<td>' + scoreformbuttonpt1 + 'strokes_hole_' + i + scoreformbuttonpt2;
+
+        for (k=0; k<=scorecard.getParForHole(i) * 2; k++){
+            if(scorecard.getPlayerScoreForHole(i,0) == k){
+                scorecardtable += '<option value="' + k + '" selected="selected">' + k + '</option>';
+            }
+            else {
+                scorecardtable += '<option value="' + k + '">' + k + '</option>';
+            }
+        }
+
+        scorecardtable += scoreformbuttonpt4 + '</td>';
+
+        scorecardtable += '<td>' + scoreformbuttonpt1 + 'putts_hole_' + i + scoreformbuttonpt2;
+
+        for (k=0; k<=scorecard.getParForHole(i) * 2; k++){
+            if(scorecard.getPlayerPuttsForHole(i,0) == k){
+                scorecardtable += '<option value="' + k + '" selected="selected">' + k + '</option>';
+            }
+            else {
+                scorecardtable += '<option value="' + k + '">' + k + '</option>';
+            }
+        }
+
+        scorecardtable += scoreformbuttonpt4 + '</td></tr>';
+
+    }
+
+    $("#frontnine").append(scorecardtable);
+    updatefronttotals();
+
+    function updatefronttotals() {
+        scorecard.calculateScores();
+
+        $("#frontninetotals").html('<tr></tr><td>Front</td><td>' +
+        scorecard.getFrontTotalPar() + '</td><td>' + scorecard.getFrontTotalYardage() + '</td><td>' +
+        scorecard.getFrontTotalForPlayer(0) + '</td><td>' + scorecard.getFrontTotalPuttsForPlayer(0) + '</td></tr>');
+
+    }
+
+    /*
+     End Front 9 scorecard
+     */
+
+
+    /*
+     Start Back 9 scorecard
+     */
+
+
+    $("#backnine").append('<tr><th>hole</th><th>par</th><th>yd</th><th>strokes</th><th>putts</th></tr>');
+
+    var scorecardtable = "";
+
+    for (i=9; i<scorecard.getCourseLength(); i++) {
+
+        scorecardtable += '<tr><td>' + scorecard.getHoleNumber(i) + '</td>'
+        + '<td>' + scorecard.getParForHole(i) + '</td>'
+        + '<td>' + scorecard.getYardageForHole(i) + '</td>';
+
+
+        scorecardtable += '<td>' + scoreformbuttonpt1 + 'strokes_hole_' + i + scoreformbuttonpt2;
+
+        for (k=0; k<=scorecard.getParForHole(i) * 2; k++){
+            if(scorecard.getPlayerScoreForHole(i,0) == k){
+                scorecardtable += '<option value="' + k + '" selected="selected">' + k + '</option>';
+            }
+            else {
+                scorecardtable += '<option value="' + k + '">' + k + '</option>';
+            }
+        }
+
+        scorecardtable += scoreformbuttonpt4 + '</td>';
+
+        scorecardtable += '<td>' + scoreformbuttonpt1 + 'putts_hole_' + i + scoreformbuttonpt2;
+
+        for (k=0; k<=scorecard.getParForHole(i) * 2; k++){
+            if(scorecard.getPlayerPuttsForHole(i,0) == k){
+                scorecardtable += '<option value="' + k + '" selected="selected">' + k + '</option>';
+            }
+            else {
+                scorecardtable += '<option value="' + k + '">' + k + '</option>';
+            }
+        }
+
+        scorecardtable += scoreformbuttonpt4 + '</td></tr>';
+
+    }
+
+    $("#backnine").append(scorecardtable);
+
+    updatebacktotals();
+
+    function updatebacktotals() {
+
+        scorecard.calculateScores();
+
+        $("#backninetotals").html('<tr></tr><td>Front</td><td>' +
+        scorecard.getFrontTotalPar() + '</td><td>' + scorecard.getFrontTotalYardage() + '</td><td>' +
+        scorecard.getFrontTotalForPlayer(0) + '</td><td>' + scorecard.getFrontTotalPuttsForPlayer(0) + '</td></tr>'
+
+        + '<tr></tr><td>Back</td><td>' +
+        scorecard.getBackTotalPar() + '</td><td>' + scorecard.getBackTotalYardage() + '</td><td>' +
+        scorecard.getBackTotalForPlayer(0) + '</td><td>' + scorecard.getBackTotalPuttsForPlayer(0) + '</td></tr>'
+
+        + '<tr></tr><td>Total</td><td>' +
+        scorecard.getTotalPar() + '</td><td>' + scorecard.getTotalYardage() + '</td><td>' +
+        scorecard.getTotalForPlayer(0) + '</td><td>' + scorecard.getTotalPuttsForPlayer(0) + '</td></tr>');
+
+    }
+
+
+
+
+
+    /*
+     End Back 9 scorecard
+     */
+
+
+    /*
+     START scorecard event handlers
+     */
+
+
+    $(".scoreselector").change(function() {
+
+        // alert("on click");
+        scoreid = $(this).attr("id");
+        //alert("scoreid: " + scoreid);
+
+        var score = $(this).val();
+
+        var scoretype = String(scoreid.split("_")[0]);
+        var holeindex = String(scoreid.split("_")[2]);
+
+        //alert('type ' + scoretype + 'hole ' + holeindex + ' score: ' + score);
+
+        if (scoretype == "strokes") {
+            scorecard.setPlayerScoreForHole(holeindex,0,score);
+        }
+        else {
+            scorecard.setPlayerPuttsForHole(holeindex,0,score);
+        }
+
+        scorecard.savegame();
+        updatebacktotals();
+        updatefronttotals();
 
     });
 
