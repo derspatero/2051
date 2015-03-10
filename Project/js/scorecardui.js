@@ -15,11 +15,11 @@ var scoreid;
  * SETUP SCREEN UI
  */
 
+createSavedGameDirectory();
+
 $("#continuegame").click(function(){
-    //alert($("#gameselector").val());
     scorecard.loadgame($("#gameselector").val());
 
-    //alert(scorecard.getScoreCardType());
     if (scorecard.getScoreCardType() == "single"){
         createSinglePlayerScoreCard();
     }
@@ -28,10 +28,11 @@ $("#continuegame").click(function(){
     }
 });
 
-function createblankscorecard(){
-    //scorecard = new scoreCard();
-    createScoreCard();
-}
+$("#deletegame").click(function(){
+    localStorage.removeItem($("#gameselector").val());
+    //createSavedGameDirectory();
+
+});
 
 $("#courseselector").change(function() {
 
@@ -62,7 +63,7 @@ $("#newsinglegame").click(function(){
     createSinglePlayerScoreCard();
 });
 
-$("#newgame").click(function(){
+$("#startgame").click(function(){
     scorecard.setPlayerNames($('#p1name').val(),$('#p2name').val(),$('#p3name').val(),$('#p4name').val());
     scorecard.setScoreCardType("4player");
     scorecard.setScoreCardDate(new Date());
@@ -70,12 +71,24 @@ $("#newgame").click(function(){
 
 });
 
-//$("#startpar72game").click(function(){
-//    scorecard.createPar72();
-//    scorecard.setPlayerNames($('#p1name').val(),$('#p2name').val(),$('#p3name').val(),$('#p4name').val());
-//    createScoreCard();
-//
-//});
+function createSavedGameDirectory() {
+    if (localStorage.length > 0 ){
+        var directory = '<label for="select-native-2"></label><select name="select-native-2" id="gameselector">';
+        for (var i = localStorage.length - 1; i >= 0; i--) {
+
+            directory += '<option value="' + localStorage.key(i) + '">' + localStorage.key(i) + '</option>';
+
+        }
+        directory += '</select>';
+
+
+        directory  += '<p><a href="#one" id="continuegame" class="ui-btn ui-shadow ui-corner-all">Continue Previous Game</a></p>';
+        directory += '<p><a href="." id="deletegame" class="ui-btn ui-shadow ui-corner-all">Delete Previous Game</a></p>';
+
+        $("#file_directory").html(directory);
+    }
+
+}
 
 
 /*

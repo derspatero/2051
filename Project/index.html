@@ -32,7 +32,8 @@
 
       <div id="file_directory"></div>
 
-      <p><a href="#one" id="continuegame" class="ui-btn ui-shadow ui-corner-all">Continue Previous Game</a></p>
+
+
 
       <!--     <p><a href="#popup" class="ui-btn ui-shadow ui-corner-all" data-rel="dialog" data-transition="pop">Show page "popup" (as a dialog)</a></p> -->
   </div><!-- /content -->
@@ -194,15 +195,10 @@
 
 
 <script>
-    var directory = '<label for="select-native-2"></label><select name="select-native-2" id="gameselector">';
-    for(var i=0; i < localStorage.length; i++) {
 
-        directory += '<option value="' + localStorage.key(i) + '">'+ localStorage.key(i) + '</option>';
 
-    }
-    directory += '</select>';
 
-    $("#file_directory").html(directory);
+
 
 </script>
 
