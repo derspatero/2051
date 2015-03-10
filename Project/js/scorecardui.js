@@ -15,9 +15,10 @@ var scoreid;
  * SETUP SCREEN UI
  */
 
+$("#continuegame").click(function(){
+    //alert($("#gameselector").val());
+    scorecard.loadgame($("#gameselector").val());
 
-function continueGame() {
-    scorecard.loadgame();
     //alert(scorecard.getScoreCardType());
     if (scorecard.getScoreCardType() == "single"){
         createSinglePlayerScoreCard();
@@ -25,7 +26,7 @@ function continueGame() {
     else {
         createScoreCard();
     }
-}
+});
 
 function createblankscorecard(){
     //scorecard = new scoreCard();
@@ -58,14 +59,13 @@ $("#courseselector").change(function() {
 $("#newsinglegame").click(function(){
     scorecard.setScoreCardType("single");
     scorecard.setScoreCardDate(new Date());
-    //alert(scorecard.getScoreCardType());
     createSinglePlayerScoreCard();
 });
 
 $("#newgame").click(function(){
     scorecard.setPlayerNames($('#p1name').val(),$('#p2name').val(),$('#p3name').val(),$('#p4name').val());
     scorecard.setScoreCardType("4player");
-    //alert(scorecard.getScoreCardType());
+    scorecard.setScoreCardDate(new Date());
     createScoreCard();
 
 });

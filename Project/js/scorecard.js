@@ -108,12 +108,13 @@ function scoreCard() {
     }
 
     this.savegame = function () {
-        var textToWrite = JSON.stringify(scorecard.course);
-        localStorage.setItem('scorecard', textToWrite);
+        var textToWrite = JSON.stringify(this.course);
+        localStorage.setItem(this.course.coursename + " " + this.course.date, textToWrite);
     }
 
-    this.loadgame = function() {
-        scorecard.course = JSON.parse(localStorage.getItem('scorecard'));
+    this.loadgame = function(item) {
+        //alert("load: " + String.toString(item));
+        this.course = JSON.parse(localStorage.getItem(item));
         createScoreCard();
     }
 

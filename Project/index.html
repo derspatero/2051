@@ -26,31 +26,13 @@
 
   <div role="main" class="ui-content">
 
-<!--                     <label for="text-basic">File name to write to:</label>
-                    <input id="file_name_input" type="text" name="text-basic" id="text-basic" value="">
-                    <label for="text-basic">Text to write to file:</label>
-                    <input id="file_text_input" type="text" name="text-basic" id="text-basic" value="">
-                    <button id="write_to_file_btn" class="ui-btn ui-shadow" onclick="savefile()">Write To File</button>
-
-                    <label for="text-basic">File name to read from:</label>
-                    <input id="read_file_name_input" type="text" name="text-basic" id="text-basic" value="">
-
-                    <button onclick="openfile();" class="ui-btn ui-shadow">Read From File</button>
-
-                    <div id="opened_file"></div>    
-
-                    <button id="write_to_file_btn" class="ui-btn ui-shadow" onclick="showdirectory('#file_directory','#opened_file')">Show Directory Contents</button>
-
-                    <div id="file_directory"></div> -->
- 
-
-
-
-
-
     <!-- <h3>Show internal pages:</h3> -->
-    <p><a href="#one" id="continuegame" class="ui-btn ui-shadow ui-corner-all">Continue Previous Game</a></p>
     <p><a href="#setup" id="newgame" class="ui-btn ui-shadow ui-corner-all">Start New Game</a></p>
+
+
+      <div id="file_directory"></div>
+
+      <p><a href="#one" id="continuegame" class="ui-btn ui-shadow ui-corner-all">Continue Previous Game</a></p>
 
       <!--     <p><a href="#popup" class="ui-btn ui-shadow ui-corner-all" data-rel="dialog" data-transition="pop">Show page "popup" (as a dialog)</a></p> -->
   </div><!-- /content -->
@@ -209,17 +191,21 @@
 
 </body>
 
-<script type="text/javascript">
-    $("#continuegame").click(function(){
-        // alert("continue game");
-        continueGame();
-    });
 
 
+<script>
+    var directory = '<label for="select-native-2"></label><select name="select-native-2" id="gameselector">';
+    for(var i=0; i < localStorage.length; i++) {
 
+        directory += '<option value="' + localStorage.key(i) + '">'+ localStorage.key(i) + '</option>';
 
+    }
+    directory += '</select>';
+
+    $("#file_directory").html(directory);
 
 </script>
+
 
 <script src="js/scorecardui.js"></script>
 
