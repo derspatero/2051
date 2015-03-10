@@ -4,6 +4,8 @@ function scoreCard() {
     this.course = {
         "coursename": "Pitch and Putt",
         "date": "",
+        "scorecardtype": "",
+        "gamestatus": "open",
         "players": ["P1", "P2", "P3", "P4"],
         "holes": [
             {"hole": 1, "yd": 75, "par": 3, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
@@ -28,7 +30,6 @@ function scoreCard() {
         "fronttotal": {"yd": 0, "par": 0, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
         "backtotal": {"yd": 0, "par": 0, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]},
         "total": {"yd": 0, "par": 0, "playerscores": [0, 0, 0, 0], "putts": [0, 0, 0, 0]}
-
     }
 
     this.calculateScores = function() {
@@ -116,82 +117,6 @@ function scoreCard() {
         createScoreCard();
     }
 
-
-    /*
-    COURSE TEMPLATES
-     */
-    this.createPar72 = function() {
-        this.course.coursename = "Real Golf!";
-        for (var i=0; i <18; i++) {
-            this.course.holes[0].par = 5;
-        }
-    }
-
-    this.createQueenElizabeth = function() {
-        this.course.coursename = "Queen Elizabeth Pitch and Putt";
-        this.course.holes[0].yd = 70;
-        this.course.holes[1].yd = 110;
-        this.course.holes[2].yd = 65;
-        this.course.holes[3].yd = 40;
-        this.course.holes[4].yd = 85;
-        this.course.holes[5].yd = 60;
-        this.course.holes[6].yd = 90;
-        this.course.holes[7].yd = 65;
-        this.course.holes[8].yd = 75;
-        this.course.holes[9].yd = 70;
-        this.course.holes[10].yd = 65;
-        this.course.holes[11].yd = 85;
-        this.course.holes[12].yd = 80;
-        this.course.holes[13].yd = 80;
-        this.course.holes[14].yd = 110;
-        this.course.holes[15].yd = 90;
-        this.course.holes[16].yd = 50;
-        this.course.holes[17].yd = 80;
-    }
-
-    this.createStanleyPark = function() {
-        this.course.coursename = "Stanley Park Pitch and Putt";
-        this.course.holes[0].yd = 45;
-        this.course.holes[1].yd = 80;
-        this.course.holes[2].yd = 65;
-        this.course.holes[3].yd = 65;
-        this.course.holes[4].yd = 85;
-        this.course.holes[5].yd = 70;
-        this.course.holes[6].yd = 60;
-        this.course.holes[7].yd = 65;
-        this.course.holes[8].yd = 50;
-        this.course.holes[9].yd = 70;
-        this.course.holes[10].yd = 50;
-        this.course.holes[11].yd = 50;
-        this.course.holes[12].yd = 65;
-        this.course.holes[13].yd = 85;
-        this.course.holes[14].yd = 43;
-        this.course.holes[15].yd = 50;
-        this.course.holes[16].yd = 50;
-        this.course.holes[17].yd = 80;
-    }
-
-    this.createRupertPark = function() {
-        this.course.coursename = "Rupert Park Pitch and Putt";
-        this.course.holes[0].yd = 70;
-        this.course.holes[1].yd = 70;
-        this.course.holes[2].yd = 75;
-        this.course.holes[3].yd = 75;
-        this.course.holes[4].yd = 80;
-        this.course.holes[5].yd = 70;
-        this.course.holes[6].yd = 65;
-        this.course.holes[7].yd = 60;
-        this.course.holes[8].yd = 55;
-        this.course.holes[9].yd = 60;
-        this.course.holes[10].yd = 70;
-        this.course.holes[11].yd = 60;
-        this.course.holes[12].yd = 50;
-        this.course.holes[13].yd = 120;
-        this.course.holes[14].yd = 70;
-        this.course.holes[15].yd = 90;
-        this.course.holes[16].yd = 95;
-        this.course.holes[17].yd = 70;
-    }
 
     /*
     GETTERS AND SETTERS
@@ -294,6 +219,107 @@ function scoreCard() {
     this.getTotalYardage = function() {
         return this.course.total.yd;
     }
+
+    this.setScoreCardType = function(gametype) {
+        this.course.scorecardtype = gametype;
+    }
+
+    this.getScoreCardType = function() {
+        return this.course.scorecardtype;
+    }
+
+    this.setGameStatus = function(gamestatus) {
+        this.course.gamestatus = gamestatus;
+    }
+
+    this.getGameStatus = function() {
+        return this.course.gamestatus;
+    }
+
+    this.setScoreCardDate = function(gamedate) {
+        this.course.date = gamedate;
+    }
+
+    this.getScoreCardDate = function() {
+        return this.course.date;
+    }
+
+    /*
+     COURSE TEMPLATES
+     */
+    this.createPar72 = function() {
+        this.course.coursename = "Real Golf!";
+        for (var i=0; i <18; i++) {
+            this.course.holes[i].par = 5;
+        }
+    }
+
+    this.createQueenElizabeth = function() {
+        this.course.coursename = "Queen Elizabeth Pitch and Putt";
+        this.course.holes[0].yd = 70;
+        this.course.holes[1].yd = 110;
+        this.course.holes[2].yd = 65;
+        this.course.holes[3].yd = 40;
+        this.course.holes[4].yd = 85;
+        this.course.holes[5].yd = 60;
+        this.course.holes[6].yd = 90;
+        this.course.holes[7].yd = 65;
+        this.course.holes[8].yd = 75;
+        this.course.holes[9].yd = 70;
+        this.course.holes[10].yd = 65;
+        this.course.holes[11].yd = 85;
+        this.course.holes[12].yd = 80;
+        this.course.holes[13].yd = 80;
+        this.course.holes[14].yd = 110;
+        this.course.holes[15].yd = 90;
+        this.course.holes[16].yd = 50;
+        this.course.holes[17].yd = 80;
+    }
+
+    this.createStanleyPark = function() {
+        this.course.coursename = "Stanley Park Pitch and Putt";
+        this.course.holes[0].yd = 45;
+        this.course.holes[1].yd = 80;
+        this.course.holes[2].yd = 65;
+        this.course.holes[3].yd = 65;
+        this.course.holes[4].yd = 85;
+        this.course.holes[5].yd = 70;
+        this.course.holes[6].yd = 60;
+        this.course.holes[7].yd = 65;
+        this.course.holes[8].yd = 50;
+        this.course.holes[9].yd = 70;
+        this.course.holes[10].yd = 50;
+        this.course.holes[11].yd = 50;
+        this.course.holes[12].yd = 65;
+        this.course.holes[13].yd = 85;
+        this.course.holes[14].yd = 43;
+        this.course.holes[15].yd = 50;
+        this.course.holes[16].yd = 50;
+        this.course.holes[17].yd = 80;
+    }
+
+    this.createRupertPark = function() {
+        this.course.coursename = "Rupert Park Pitch and Putt";
+        this.course.holes[0].yd = 70;
+        this.course.holes[1].yd = 70;
+        this.course.holes[2].yd = 75;
+        this.course.holes[3].yd = 75;
+        this.course.holes[4].yd = 80;
+        this.course.holes[5].yd = 70;
+        this.course.holes[6].yd = 65;
+        this.course.holes[7].yd = 60;
+        this.course.holes[8].yd = 55;
+        this.course.holes[9].yd = 60;
+        this.course.holes[10].yd = 70;
+        this.course.holes[11].yd = 60;
+        this.course.holes[12].yd = 50;
+        this.course.holes[13].yd = 120;
+        this.course.holes[14].yd = 70;
+        this.course.holes[15].yd = 90;
+        this.course.holes[16].yd = 95;
+        this.course.holes[17].yd = 70;
+    }
+
 
 }
 

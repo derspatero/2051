@@ -18,6 +18,13 @@ var scoreid;
 
 function continueGame() {
     scorecard.loadgame();
+    //alert(scorecard.getScoreCardType());
+    if (scorecard.getScoreCardType() == "single"){
+        createSinglePlayerScoreCard();
+    }
+    else {
+        createScoreCard();
+    }
 }
 
 function createblankscorecard(){
@@ -33,7 +40,6 @@ $("#courseselector").change(function() {
     if($(this).val() == 'par72') {
         scorecard = new scoreCard();
         scorecard.createPar72();
-        //alert(scorecard.getCourseName());
     }
     if($(this).val() == 'QE') {
         scorecard = new scoreCard();
@@ -50,11 +56,16 @@ $("#courseselector").change(function() {
 });
 
 $("#newsinglegame").click(function(){
+    scorecard.setScoreCardType("single");
+    scorecard.setScoreCardDate(new Date());
+    //alert(scorecard.getScoreCardType());
     createSinglePlayerScoreCard();
 });
 
 $("#newgame").click(function(){
     scorecard.setPlayerNames($('#p1name').val(),$('#p2name').val(),$('#p3name').val(),$('#p4name').val());
+    scorecard.setScoreCardType("4player");
+    //alert(scorecard.getScoreCardType());
     createScoreCard();
 
 });
@@ -75,7 +86,7 @@ $("#newgame").click(function(){
 
 function createScoreCard() {
 
-    $("h1").html(scorecard.getCourseName());
+    $("h1").html(scorecard.getCourseName() + "<br />" + scorecard.getScoreCardDate());
 
 
     $("#frontnine").html("");
@@ -272,7 +283,7 @@ function createScoreCard() {
 
 function createSinglePlayerScoreCard() {
 
-    $("h1").html(scorecard.getCourseName());
+    $("h1").html(scorecard.getCourseName() + "<br />" + scorecard.getScoreCardDate());
 
 
     $("#frontnine").html("");
