@@ -1,0 +1,261 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* Table of Contents
+
+1. Resets
+2. Typograghy
+3. Header	
+
+*/
+
+/* CSS Resets */
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, main, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box;
+}
+
+/* End CSS Resets */
+
+/* Typography */
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
+
+p {
+	line-height: 1.4;
+	font-family: Constantia, "Lucida Bright", "DejaVu Serif", Georgia, serif;	
+}
+
+.logo {
+	font-weight: bold;
+	font-size: 2em;
+	line-height: 74px;
+	float: left;
+	padding-left: 30px;
+}
+
+.logo a {
+	color: #FFF;
+	text-decoration: none;	
+}
+
+/* End Typography */
+
+/* Overall styles */
+
+body {
+	background-image: url(../images/skulls.png);
+	background-attachment: fixed;	
+}
+
+.inner {
+	max-width: 1200px;
+	min-width: 300px;
+	margin: 0 auto;
+}
+
+img {
+	max-width: 100%;
+	height: auto;	
+}
+
+.clear {
+	clear: both;	
+}
+
+/* End overall styles */
+
+/* Header */
+
+header,
+footer {
+	height: 74px;
+	background-color: #706e6e;	
+}
+
+/* End Header */
+
+/* Main Nav */
+
+header nav,
+footer nav {
+	float: right;
+	width: 344px;
+	padding-right: 30px;	
+}
+
+header nav a,
+footer nav a {
+	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-decoration: none;
+	float: left;
+	line-height: 74px;
+	padding-left: 10px;
+	padding-right: 10px;
+	display: block;	
+}
+
+.mobile_menu {
+	display: none;
+	text-indent: 150%;
+	white-space: nowrap;
+	overflow: hidden;	
+}
+
+/* End Main Nav */
+
+/* Main Content Area Styles */
+
+main {
+	padding: 30px;	
+	background-color: #FFFFFF;
+}
+
+section > h1 {
+	font-size: 1.7rem;
+	font-weight: bold;
+	margin-bottom: 30px;
+}
+
+section article {
+	float: left;
+	width: 32%;
+	margin-right: 2%;
+	margin-bottom: 30px;
+	padding-left: 10px;
+	padding-right: 10px;	
+}
+
+
+section article p {
+	clear: both;	
+}
+
+section article:nth-of-type(3),
+section article:nth-of-type(6) {
+	margin-right: 0;	
+}
+
+section article h1 {
+	font-size: 1.3rem;
+	font-weight: bold;
+	margin-top: 10px;
+	margin-bottom: 10px;	
+}
+
+section:nth-of-type(2) {
+	padding-top: 30px;
+	border-top: 2px dotted #E8E8E8;
+	margin-top: 20px;	
+}
+
+nav ul {
+    display: block;
+}
+
+nav select {
+    display: none;
+    float: right;
+}
+
+@media only screen and (max-width: 1000px) {
+    section article {
+        float: left;
+        width: 45%;
+        margin-right: 2%;
+        margin-bottom: 30px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    section article {
+        float: left;
+        width: 100%;
+        margin-right: 2%;
+        margin-bottom: 30px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    nav ul {
+        display: none;
+    }
+    nav select {
+        display: inline-block;
+    }
+}
+
+/* End Main Content Area Styles */
+
+/* Footer Nav */
+
+footer nav {
+	float: none;
+	margin: 0 auto;
+}
+
+
+
+
+
+
+
