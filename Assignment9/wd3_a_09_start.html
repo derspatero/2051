@@ -100,17 +100,8 @@
     $("article").append('<button>see more</button>');
     $("button").css("display", "none");
     $("button").click(function () {
-//        alert($(this).html());
-        if ($(this).html() == "see more"){
-            $(this).parent().children().css("display", "block");
-            $(this).html("see less");
-        }
-        else {
-//            alert("else");
-            $(this).parent().children().css("display", "none");
-            $(this).html("see more");
-        }
-
+        $(this).parent().children().css("display", "block");
+        $(this).css("display", "none");
     });
 
     enquire.register('screen and (max-width: 500px)', {
@@ -124,7 +115,6 @@
         unmatch : function() {
             $("p").css("display", "block");
             $("button").css("display", "none");
-            $("button").html("see more");
 
 
         }
