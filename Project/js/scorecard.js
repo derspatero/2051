@@ -4,7 +4,7 @@ function scoreCard() {
     this.course = {
         "coursename": "Pitch and Putt",
         "date": "",
-        "scorecardtype": "",
+        "scorecardtype": "single",
         "gamestatus": "open",
         "players": ["P1", "P2", "P3", "P4"],
         "holes": [
@@ -108,6 +108,8 @@ function scoreCard() {
     }
 
     this.savegame = function () {
+        this.calculateScores();
+        this.setGameStatus();
         var textToWrite = JSON.stringify(this.course);
         localStorage.setItem(this.course.coursename + " " + this.course.date, textToWrite);
     }
@@ -229,8 +231,13 @@ function scoreCard() {
         return this.course.scorecardtype;
     }
 
-    this.setGameStatus = function(gamestatus) {
-        this.course.gamestatus = gamestatus;
+    this.setGameStatus = function() {
+        this.course.gamestatus = "closed";
+        for (var i=0; i < this.course.holes.length; i++){
+            if (this.course.holes[i].playerscores[0] == 0) {
+                this.course.gamestatus = "open";
+            }
+        }
     }
 
     this.getGameStatus = function() {
@@ -244,6 +251,8 @@ function scoreCard() {
     this.getScoreCardDate = function() {
         return this.course.date;
     }
+
+
 
     /*
      COURSE TEMPLATES

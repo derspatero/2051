@@ -76,7 +76,7 @@ function createSavedGameDirectory() {
         var directory = '<label for="select-native-2"></label><select name="select-native-2" id="gameselector">';
         for (var i = localStorage.length - 1; i >= 0; i--) {
 
-            directory += '<option value="' + localStorage.key(i) + '">' + localStorage.key(i) + '</option>';
+            directory += '<option value="' + localStorage.key(i) + '">' + localStorage.key(i) + ' (' + JSON.parse(localStorage.getItem(localStorage.key(i))).gamestatus + ')' + '</option>';
 
         }
         directory += '</select>';
