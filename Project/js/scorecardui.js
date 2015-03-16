@@ -20,6 +20,9 @@ createSavedGameDirectory();
 $("#continuegame").click(function(){
     scorecard.loadgame($("#gameselector").val());
 
+    var statistics = new coursestatistics(scorecard.getCourseName(),5);
+    statistics.calculateCourse();
+
     if (scorecard.getScoreCardType() == "single"){
         createSinglePlayerScoreCard();
     }
