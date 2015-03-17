@@ -112,11 +112,13 @@ function scoreCard() {
         this.setGameStatus();
         var textToWrite = JSON.stringify(this.course);
         localStorage.setItem(this.course.coursename + " " + this.course.date, textToWrite);
+        console.log("saved: " + textToWrite);
     }
 
     this.loadgame = function(item) {
         //alert("load: " + String.toString(item));
         this.course = JSON.parse(localStorage.getItem(item));
+        this.course.date = new Date(this.course.date);
         createScoreCard();
     }
 
