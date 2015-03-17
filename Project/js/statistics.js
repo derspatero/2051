@@ -125,6 +125,8 @@ function coursestatistics(course, history) {
         "total": {"bestscore": 0, "average": 0, "averagetogreen": 0, "averageputts": 0},
     }
 
+    //calculateStats();
+
     this.calculateCourse = function() {
         var gamecounter = 0;
         if (localStorage.length > 0) {
@@ -189,4 +191,21 @@ function coursestatistics(course, history) {
 
     }
     console.log(this.stats);
+
+    this.getAverageForHole = function(hole) {
+        return this.stats.holes[hole].average;
+    }
+
+    this.getBestForHole = function(hole) {
+        return this.stats.holes[hole].bestscore;
+    }
+
+    this.getAverageToGreenForHole = function(hole) {
+        return this.stats.holes[hole].averagetogreen;
+    }
+
+    this.getPuttingAverageForHole = function(hole) {
+        return this.stats.holes[hole].averageputts;
+    }
+
 }

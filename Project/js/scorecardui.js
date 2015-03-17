@@ -10,6 +10,7 @@ var scoreformbuttonpt3 = '<option value="0">0</option>';
 var scoreformbuttonpt4 = '</select>';
 var scorecard = new scoreCard();
 var scoreid;
+var statistics;
 
 /*
  * SETUP SCREEN UI
@@ -18,12 +19,13 @@ var scoreid;
 createSavedGameDirectory();
 
 $("#continuegame").click(function(){
+
+
     scorecard.loadgame($("#gameselector").val());
 
-    var statistics = new coursestatistics(scorecard.getCourseName(),5);
-    statistics.calculateCourse();
-
     if (scorecard.getScoreCardType() == "single"){
+        statistics = new coursestatistics(scorecard.getCourseName(),5);
+        statistics.calculateCourse();
         createSinglePlayerScoreCard();
     }
     else {
@@ -63,6 +65,8 @@ $("#courseselector").change(function() {
 $("#newsinglegame").click(function(){
     scorecard.setScoreCardType("single");
     scorecard.setScoreCardDate(new Date());
+    statistics = new coursestatistics(scorecard.getCourseName(),5);
+    statistics.calculateCourse();
     createSinglePlayerScoreCard();
 });
 
@@ -311,7 +315,7 @@ function createSinglePlayerScoreCard() {
      Front 9 scorecard
      */
 
-    $("#frontnine").append('<tr><th>hole</th><th>par</th><th>yd</th><th>strokes</th><th>putts</th></tr>');
+    $("#frontnine").append('<tr><th>hole</th><th>par</th><th>yd</th><th>strokes</th><th>putts</th><th>average</th><th>best</th><th>avg to green</th><th>avg putts</th></tr>');
 
     var scorecardtable = "";
 
@@ -346,7 +350,12 @@ function createSinglePlayerScoreCard() {
             }
         }
 
-        scorecardtable += scoreformbuttonpt4 + '</td></tr>';
+        scorecardtable += scoreformbuttonpt4 + '</td>';
+
+        scorecardtable += '<td>' + statistics.getAverageForHole(i) + '</td>'
+        + '<td>' + statistics.getBestForHole(i) + '</td>'
+        + '<td>' + statistics.getAverageToGreenForHole(i) + '</td>'
+        + '<td>' + statistics.getPuttingAverageForHole(i) + '</td></tr>';
 
     }
 
@@ -372,7 +381,7 @@ function createSinglePlayerScoreCard() {
      */
 
 
-    $("#backnine").append('<tr><th>hole</th><th>par</th><th>yd</th><th>strokes</th><th>putts</th></tr>');
+    $("#backnine").append('<tr><th>hole</th><th>par</th><th>yd</th><th>strokes</th><th>putts</th><th>average</th><th>best</th><th>avg to green</th><th>avg putts</th></tr>');
 
     var scorecardtable = "";
 
@@ -407,7 +416,13 @@ function createSinglePlayerScoreCard() {
             }
         }
 
-        scorecardtable += scoreformbuttonpt4 + '</td></tr>';
+        scorecardtable += scoreformbuttonpt4 + '</td>';
+
+        scorecardtable += '<td>' + statistics.getAverageForHole(i) + '</td>'
+        + '<td>' + statistics.getBestForHole(i) + '</td>'
+        + '<td>' + statistics.getAverageToGreenForHole(i) + '</td>'
+        + '<td>' + statistics.getPuttingAverageForHole(i) + '</td></tr>';
+
 
     }
 
