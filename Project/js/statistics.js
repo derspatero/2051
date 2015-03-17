@@ -208,4 +208,51 @@ function coursestatistics(course, history) {
         return this.stats.holes[hole].averageputts;
     }
 
+    this.getBestScore = function(){
+        return this.stats.total.bestscore;
+    }
+
+    this.getAverageScore = function(){
+        return this.stats.total.average;
+    }
+
+    this.getAverageToGreen = function(){
+        return this.stats.total.averagetogreen;
+    }
+
+    this.getPuttingAverage = function() {
+        return this.stats.total.averageputts;
+    }
+
+    this.getFrontBestScore = function(){
+        return this.stats.fronttotal.bestscore;
+    }
+
+    this.getFrontAverageScore = function(){
+        return this.stats.fronttotal.average;
+    }
+
+    this.getFrontAverageToGreen = function(){
+        return this.stats.fronttotal.averagetogreen;
+    }
+
+    this.getFrontPuttingAverage = function() {
+        return this.stats.fronttotal.averageputts;
+    }
+
+    this.getBackBestScore = function(){
+        return this.stats.backtotal.bestscore;
+    }
+
+    this.getBackAverageScore = function(){
+        return this.stats.backtotal.average;
+    }
+
+    this.getBackAverageToGreen = function(){
+        return this.stats.backtotal.averagetogreen;
+    }
+
+    this.getBackPuttingAverage = function() {
+        return this.stats.backtotal.averageputts;
+    }
 }

@@ -315,7 +315,12 @@ function createSinglePlayerScoreCard() {
      Front 9 scorecard
      */
 
-    $("#frontnine").append('<tr><th>hole</th><th>par</th><th>yd</th><th>strokes</th><th>putts</th><th>average</th><th>best</th><th>avg to green</th><th>avg putts</th></tr>');
+    if (statistics.getBestScore() != 0) {
+        $("#frontnine").append('<tr><th>hole</th><th>par</th><th>yd</th><th>strokes</th><th>putts</th><th>average</th><th>best</th><th>avg to green</th><th>avg putts</th></tr>');
+    }
+    else {
+        $("#frontnine").append('<tr><th>hole</th><th>par</th><th>yd</th><th>strokes</th><th>putts</th></tr>');
+    }
 
     var scorecardtable = "";
 
@@ -352,10 +357,14 @@ function createSinglePlayerScoreCard() {
 
         scorecardtable += scoreformbuttonpt4 + '</td>';
 
-        scorecardtable += '<td>' + statistics.getAverageForHole(i) + '</td>'
-        + '<td>' + statistics.getBestForHole(i) + '</td>'
-        + '<td>' + statistics.getAverageToGreenForHole(i) + '</td>'
-        + '<td>' + statistics.getPuttingAverageForHole(i) + '</td></tr>';
+        if (statistics.getBestScore() != 0) {
+            scorecardtable += '<td>' + statistics.getAverageForHole(i) + '</td>'
+            + '<td>' + statistics.getBestForHole(i) + '</td>'
+            + '<td>' + statistics.getAverageToGreenForHole(i) + '</td>'
+            + '<td>' + statistics.getPuttingAverageForHole(i) + '</td>';
+        }
+
+        scorecardtable += '</tr>';
 
     }
 
@@ -365,10 +374,20 @@ function createSinglePlayerScoreCard() {
     function updatefronttotals() {
         scorecard.calculateScores();
 
-        $("#frontninetotals").html('<tr></tr><td>Front</td><td>' +
-        scorecard.getFrontTotalPar() + '</td><td>' + scorecard.getFrontTotalYardage() + '</td><td>' +
-        scorecard.getFrontTotalForPlayer(0) + '</td><td>' + scorecard.getFrontTotalPuttsForPlayer(0) + '</td></tr>');
+        var tablestring = '<tr></tr><td>Front</td><td>' +
+            scorecard.getFrontTotalPar() + '</td><td>' + scorecard.getFrontTotalYardage() + '</td><td>' +
+            scorecard.getFrontTotalForPlayer(0) + '</td><td>' + scorecard.getFrontTotalPuttsForPlayer(0) + '</td>';
 
+
+        if (statistics.getBestScore() != 0) {
+            tablestring += '<td>' + statistics.getFrontAverageScore() + '</td>'
+            + '<td>' + statistics.getFrontBestScore() + '</td>'
+            + '<td>' + statistics.getFrontAverageToGreen() + '</td>'
+            + '<td>' + statistics.getFrontPuttingAverage() + '</td>';
+        }
+
+        tablestring += '</tr>';
+        $("#frontninetotals").html(tablestring);
     }
 
     /*
@@ -380,9 +399,12 @@ function createSinglePlayerScoreCard() {
      Start Back 9 scorecard
      */
 
-
-    $("#backnine").append('<tr><th>hole</th><th>par</th><th>yd</th><th>strokes</th><th>putts</th><th>average</th><th>best</th><th>avg to green</th><th>avg putts</th></tr>');
-
+    if (statistics.getBestScore() != 0) {
+        $("#backnine").append('<tr><th>hole</th><th>par</th><th>yd</th><th>strokes</th><th>putts</th><th>average</th><th>best</th><th>avg to green</th><th>avg putts</th></tr>');
+    }
+    else {
+        $("#backnine").append('<tr><th>hole</th><th>par</th><th>yd</th><th>strokes</th><th>putts</th></tr>');
+    }
     var scorecardtable = "";
 
     for (i=9; i<scorecard.getCourseLength(); i++) {
@@ -418,12 +440,13 @@ function createSinglePlayerScoreCard() {
 
         scorecardtable += scoreformbuttonpt4 + '</td>';
 
-        scorecardtable += '<td>' + statistics.getAverageForHole(i) + '</td>'
-        + '<td>' + statistics.getBestForHole(i) + '</td>'
-        + '<td>' + statistics.getAverageToGreenForHole(i) + '</td>'
-        + '<td>' + statistics.getPuttingAverageForHole(i) + '</td></tr>';
-
-
+        if (statistics.getBestScore() != 0) {
+            scorecardtable += '<td>' + statistics.getAverageForHole(i) + '</td>'
+            + '<td>' + statistics.getBestForHole(i) + '</td>'
+            + '<td>' + statistics.getAverageToGreenForHole(i) + '</td>'
+            + '<td>' + statistics.getPuttingAverageForHole(i) + '</td>';
+        }
+        scorecardtable += '</tr>'
     }
 
     $("#backnine").append(scorecardtable);
@@ -434,21 +457,66 @@ function createSinglePlayerScoreCard() {
 
         scorecard.calculateScores();
 
-        $("#backninetotals").html('<tr></tr><td>Front</td><td>' +
+        var tablestring = '<tr></tr><td>Front</td><td>' +
         scorecard.getFrontTotalPar() + '</td><td>' + scorecard.getFrontTotalYardage() + '</td><td>' +
-        scorecard.getFrontTotalForPlayer(0) + '</td><td>' + scorecard.getFrontTotalPuttsForPlayer(0) + '</td></tr>'
+        scorecard.getFrontTotalForPlayer(0) + '</td><td>' + scorecard.getFrontTotalPuttsForPlayer(0) + '</td>';
 
-        + '<tr></tr><td>Back</td><td>' +
+        if (statistics.getBestScore() != 0) {
+            tablestring += '<td>' + statistics.getFrontAverageScore() + '</td>'
+            + '<td>' + statistics.getFrontBestScore() + '</td>'
+            + '<td>' + statistics.getFrontAverageToGreen() + '</td>'
+            + '<td>' + statistics.getFrontPuttingAverage() + '</td>';
+        }
+
+        tablestring += '</tr>';
+
+        tablestring += '<tr></tr><td>Back</td><td>' +
         scorecard.getBackTotalPar() + '</td><td>' + scorecard.getBackTotalYardage() + '</td><td>' +
-        scorecard.getBackTotalForPlayer(0) + '</td><td>' + scorecard.getBackTotalPuttsForPlayer(0) + '</td></tr>'
+        scorecard.getBackTotalForPlayer(0) + '</td><td>' + scorecard.getBackTotalPuttsForPlayer(0) + '</td>';
 
-        + '<tr></tr><td>Total</td><td>' +
+        if (statistics.getBestScore() != 0) {
+            tablestring += '<td>' + statistics.getBackAverageScore() + '</td>'
+            + '<td>' + statistics.getBackBestScore() + '</td>'
+            + '<td>' + statistics.getBackAverageToGreen() + '</td>'
+            + '<td>' + statistics.getBackPuttingAverage() + '</td>';
+        }
+
+        tablestring += '</tr>';
+
+        tablestring += '<tr></tr><td>Total</td><td>' +
         scorecard.getTotalPar() + '</td><td>' + scorecard.getTotalYardage() + '</td><td>' +
-        scorecard.getTotalForPlayer(0) + '</td><td>' + scorecard.getTotalPuttsForPlayer(0) + '</td></tr>');
+        scorecard.getTotalForPlayer(0) + '</td><td>' + scorecard.getTotalPuttsForPlayer(0) + '</td>';
 
+        if (statistics.getBestScore() != 0) {
+            tablestring += '<td>' + statistics.getAverageScore() + '</td>'
+            + '<td>' + statistics.getBestScore() + '</td>'
+            + '<td>' + statistics.getAverageToGreen() + '</td>'
+            + '<td>' + statistics.getPuttingAverage() + '</td>';
+        }
+
+        tablestring += '</tr>';
+
+        $("#backninetotals").html(tablestring);
     }
 
-
+    //function updatefronttotals() {
+    //    scorecard.calculateScores();
+    //
+    //    var tablestring = '<tr></tr><td>Front</td><td>' +
+    //        scorecard.getFrontTotalPar() + '</td><td>' + scorecard.getFrontTotalYardage() + '</td><td>' +
+    //        scorecard.getFrontTotalForPlayer(0) + '</td><td>' + scorecard.getFrontTotalPuttsForPlayer(0) + '</td>';
+    //
+    //
+    //    if (statistics.getBestScore() != 0) {
+    //        tablestring += '<td>' + statistics.getFrontAverageScore() + '</td>'
+    //        + '<td>' + statistics.getFrontBestScore() + '</td>'
+    //        + '<td>' + statistics.getFrontAverageToGreen() + '</td>'
+    //        + '<td>' + statistics.getFrontPuttingAverage() + '</td>';
+    //    }
+    //
+    //    tablestring += '</tr>';
+    //    $("#frontninetotals").html(tablestring);
+    //}
 
 
 
