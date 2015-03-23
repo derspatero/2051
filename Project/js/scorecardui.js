@@ -89,8 +89,8 @@ function createSavedGameDirectory() {
         directory += '</select>';
 
 
-        directory  += '<p><a href="#one" id="continuegame" class="ui-btn ui-shadow ui-corner-all">Continue Previous Game</a></p>';
-        directory += '<p><a href="." id="deletegame" class="ui-btn ui-shadow ui-corner-all">Delete Previous Game</a></p>';
+        directory  += '<p><a href="#one" id="continuegame" class="ui-btn ui-shadow ui-corner-all">Continue Selected Game</a></p>';
+        directory += '<p><a href="." id="deletegame" class="ui-btn ui-shadow ui-corner-all">Delete Selected Game</a></p>';
 
         $("#file_directory").html(directory);
     }

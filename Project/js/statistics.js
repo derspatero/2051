@@ -66,19 +66,19 @@ function calculateStats() {
             }
         }
 
-        statistics.average = parseInt(statistics.average)/statistics.number_of_games;
-        statistics.average_of_last20 = parseInt(statistics.average_of_last20)/statistics.number_of_games;
-        statistics.putting = statistics.putting/statistics.number_of_games;
+        statistics.average = (parseInt(statistics.average)/statistics.number_of_games).toFixed(2);
+        statistics.average_of_last20 = (parseInt(statistics.average_of_last20)/statistics.number_of_games).toFixed(2);
+        statistics.putting = (statistics.putting/statistics.number_of_games).toFixed(2);
 
         //calculate handicap
         for (var i=0; i < handicapscores.length && i < 10; i++){
             statistics.handicap += handicapscores[i];
         }
         if (handicapscores.length < 10){
-            statistics.handicap = statistics.handicap/handicapscores.length;
+            statistics.handicap = (statistics.handicap/handicapscores.length).toFixed(2);
         }
         else {
-            statistics.handicap = statistics.handicap/10;
+            statistics.handicap = (statistics.handicap/10).toFixed(2);
         }
 
 
@@ -193,7 +193,7 @@ function coursestatistics(course, history) {
     console.log(this.stats);
 
     this.getAverageForHole = function(hole) {
-        return this.stats.holes[hole].average;
+        return (this.stats.holes[hole].average).toFixed(2);
     }
 
     this.getBestForHole = function(hole) {
@@ -201,11 +201,11 @@ function coursestatistics(course, history) {
     }
 
     this.getAverageToGreenForHole = function(hole) {
-        return this.stats.holes[hole].averagetogreen;
+        return (this.stats.holes[hole].averagetogreen).toFixed(2);
     }
 
     this.getPuttingAverageForHole = function(hole) {
-        return this.stats.holes[hole].averageputts;
+        return (this.stats.holes[hole].averageputts).toFixed(2);
     }
 
     this.getBestScore = function(){
@@ -213,15 +213,15 @@ function coursestatistics(course, history) {
     }
 
     this.getAverageScore = function(){
-        return this.stats.total.average;
+        return (this.stats.total.average).toFixed(2);
     }
 
     this.getAverageToGreen = function(){
-        return this.stats.total.averagetogreen;
+        return (this.stats.total.averagetogreen).toFixed(2);
     }
 
     this.getPuttingAverage = function() {
-        return this.stats.total.averageputts;
+        return (this.stats.total.averageputts).toFixed(2);
     }
 
     this.getFrontBestScore = function(){
@@ -229,15 +229,15 @@ function coursestatistics(course, history) {
     }
 
     this.getFrontAverageScore = function(){
-        return this.stats.fronttotal.average;
+        return (this.stats.fronttotal.average).toFixed(2);
     }
 
     this.getFrontAverageToGreen = function(){
-        return this.stats.fronttotal.averagetogreen;
+        return (this.stats.fronttotal.averagetogreen).toFixed(2);
     }
 
     this.getFrontPuttingAverage = function() {
-        return this.stats.fronttotal.averageputts;
+        return (this.stats.fronttotal.averageputts).toFixed(2);
     }
 
     this.getBackBestScore = function(){
@@ -245,14 +245,14 @@ function coursestatistics(course, history) {
     }
 
     this.getBackAverageScore = function(){
-        return this.stats.backtotal.average;
+        return (this.stats.backtotal.average).toFixed(2);
     }
 
     this.getBackAverageToGreen = function(){
-        return this.stats.backtotal.averagetogreen;
+        return (this.stats.backtotal.averagetogreen).toFixed(2);
     }
 
     this.getBackPuttingAverage = function() {
-        return this.stats.backtotal.averageputts;
+        return (this.stats.backtotal.averageputts).toFixed(2);
     }
 }
