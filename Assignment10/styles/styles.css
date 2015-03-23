@@ -1,0 +1,171 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* CSS Resets */
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+main {
+	display: block;	
+}
+
+*, 
+*:before, 
+*:after {
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box;
+}
+
+/* Typography */
+
+h1, h2, h3 {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;	
+}
+
+h1 {
+	font-size: 38px;	
+}
+
+h2 {
+	margin-bottom: 30px;
+	line-height: 1.4;	
+}
+
+p, label, input, td {
+	font-family: 'Open Sans', sans-serif;	
+}
+
+/* Body */
+
+body {
+	background-image: url(../images/cloth_alike.png);		
+}
+
+
+/* Wrapper */
+
+.wrapper {
+	border: 5px solid #A2A2A2;
+	border-radius: 20px;
+	margin: 30px auto;
+	width: 720px;
+	background-color: #fff;
+	padding: 30px;
+	-webkit-box-shadow: 0px 0px 6px #222222;
+	box-shadow: 0px 0px 6px #222222;
+}
+
+header {
+	margin-bottom: 30px;	
+}
+
+main {
+
+}
+
+.col_02 {
+	width: 60%;
+	float: left;	
+}
+
+.col_01 {
+	width: 40%;
+	float: left;
+	padding-right: 30px;		
+}
+
+label {
+	display: block;
+	margin-bottom: 5px;	
+}
+
+input {
+	margin-bottom: 12px;	
+}
+
+canvas {
+	margin-bottom: 30px;	
+}
+
+table td {
+	padding: 8px 12px;	
+}
+
+.box {
+	height: 16px;
+	width: 16px;
+	position: relative;
+	top: 2px;
+	right: 13px;	
+}
+
+.box_mp {
+	background-color: #fb2f42;	
+}
+
+.box_ir {
+	background-color: #d5d2d3;	
+}
+
+footer {
+	clear: both;
+	padding-top: 30px;
+}
+
+footer p {
+	line-height: 1.4;
+	margin-bottom: 20px;	
+}
+
+footer p:last-of-type {
+	margin-bottom: 0;	
+}

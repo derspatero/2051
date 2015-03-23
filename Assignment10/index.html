@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Mortgage Affordability Application</title>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans|Oswald:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <script src="./scripts/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <h1>Mortgage Affordability Application</h1>
+    </header>
+    <main>
+      <div class="col_01">
+        <h2>Enter Mortgage and Income Information</h2>
+        <form>
+          <label for="amount">Mortgage Amount: </label>
+          <input id="amount" type="text">
+          
+          <label for="term">Term: </label>
+          <input id="term" type="text">
+          
+          <label for="ir">Interest Rate (%): </label>
+          <input id="ir" type="text">
+          
+          <label for="income">Annual Income($): </label>
+          <input id="income" type="text">
+          <input id="btn_submit" type="button" value="Submit">
+        </form>
+      </div><!-- end col_01 -->
+      <div class="col_02">
+        <h2>Mortgage Payment as a Percentage of Monthly Income</h2>
+  	    <canvas id="canvas_01" width="260" height="260">
+            Your browser does not support HTML5 Canvas
+        </canvas>
+        <table>
+          <tr>
+            <td>Mortgage Payment:</td>
+          	<td>
+              <div class="box box_mp">
+              </div>
+          	</td>
+          </tr>
+          <tr>
+            <td>Income Remaining:</td>
+          	<td>
+              <div class="box box_ir">
+              </div>
+          	</td>
+          </tr>
+        </table>
+      </div><!-- end col_02 -->
+    </main>
+    <footer>
+      <p>&copy; 2014 Michael Whyte</p>
+      <p>Monthly mortgage payment javaScript function modified from code found at: <a href="http://www.mcfedries.com/creatingawebpage/mortgage.htm">http://www.mcfedries.com/creatingawebpage/mortgage.htm</a></p>
+    </footer>
+  </div><!-- end wrapper -->
+<script src="scripts/script.js"></script>
+</body>
+</html>
