@@ -338,7 +338,7 @@ function createSinglePlayerScoreCard() {
      */
 
     if (statistics.getBestScore() != 0) {
-        $("#frontnine").append('<tr><th>hole</th><th>par</th><th>yd</th><th>strokes</th><th>putts</th><th>average</th><th>best</th><th>avg to green</th><th>avg putts</th></tr>');
+        $("#frontnine").append('<tr><th>hole</th><th>par</th><th>yd</th><th>strokes</th><th>putts</th><th>avg</th><th>best</th><th>green</th><th>putts</th></tr>');
     }
     else {
         $("#frontnine").append('<tr><th>hole</th><th>par</th><th>yd</th><th>strokes</th><th>putts</th></tr>');
@@ -396,7 +396,8 @@ function createSinglePlayerScoreCard() {
     function updatefronttotals() {
         scorecard.calculateScores();
 
-        var tablestring = '<tr></tr><td>Front</td><td>' +
+        var tablestring = '<tr><th>hole</th><th>par</th><th>yd</th><th>strokes</th><th>putts</th><th>avg</th><th>best</th><th>green</th><th>putts</th></tr>' +
+            '<tr></tr><td>Front</td><td>' +
             scorecard.getFrontTotalPar() + '</td><td>' + scorecard.getFrontTotalYardage() + '</td><td>' +
             scorecard.getFrontTotalForPlayer(0) + '</td><td>' + scorecard.getFrontTotalPuttsForPlayer(0) + '</td>';
 
@@ -422,7 +423,7 @@ function createSinglePlayerScoreCard() {
      */
 
     if (statistics.getBestScore() != 0) {
-        $("#backnine").append('<tr><th>hole</th><th>par</th><th>yd</th><th>strokes</th><th>putts</th><th>average</th><th>best</th><th>avg to green</th><th>avg putts</th></tr>');
+        $("#backnine").append('<tr><th>hole</th><th>par</th><th>yd</th><th>strokes</th><th>putts</th><th>avg</th><th>best</th><th>green</th><th>putts</th></tr>');
     }
     else {
         $("#backnine").append('<tr><th>hole</th><th>par</th><th>yd</th><th>strokes</th><th>putts</th></tr>');
@@ -479,9 +480,10 @@ function createSinglePlayerScoreCard() {
 
         scorecard.calculateScores();
 
-        var tablestring = '<tr></tr><td>Front</td><td>' +
-        scorecard.getFrontTotalPar() + '</td><td>' + scorecard.getFrontTotalYardage() + '</td><td>' +
-        scorecard.getFrontTotalForPlayer(0) + '</td><td>' + scorecard.getFrontTotalPuttsForPlayer(0) + '</td>';
+        var tablestring = '<tr><th>hole</th><th>par</th><th>yd</th><th>strokes</th><th>putts</th><th>avg</th><th>best</th><th>green</th><th>putts</th></tr>' +
+            '<tr></tr><td>Front</td><td>' +
+            scorecard.getFrontTotalPar() + '</td><td>' + scorecard.getFrontTotalYardage() + '</td><td>' +
+            scorecard.getFrontTotalForPlayer(0) + '</td><td>' + scorecard.getFrontTotalPuttsForPlayer(0) + '</td>';
 
         if (statistics.getBestScore() != 0) {
             tablestring += '<td>' + statistics.getFrontAverageScore() + '</td>'
