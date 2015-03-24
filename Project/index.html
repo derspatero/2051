@@ -31,21 +31,24 @@
     </div><!-- /content -->
 
     <div data-role="footer">
-        <h4></h4>
+        <h4>Edward Lambke COMP-2051</h4>
     </div><!-- /footer -->
 </div><!-- /page stats -->
 
 <div data-role="page" id="home">
 
   <div data-role="header">
-    <h1></h1>
+    <h1>Pitch And Putt Score Keeper</h1>
   </div><!-- /header -->
 
   <div role="main" class="ui-content">
 
-      <h3>Your Stats</h3>
 
-      <table>
+
+      <table id="playerstatstable">
+          <tr>
+              <th colspan="2">Your Stats</th>
+          </tr>
           <tr>
               <td>
                   Number of games
@@ -117,6 +120,22 @@
 
   <div role="main" class="ui-content">
 
+      <label for="select-native-2">Select course</label>
+      <select name="select-native-2" id="courseselector">
+          <option value="par3">Blank par 3</option>
+          <option value="par72">Blank par 72</option>
+          <option value="QE">Queen Elizabeth</option>
+          <option value="StanleyPark">Stanley Park</option>
+          <option value="RupertPark">Rupert Park</option>
+      </select>
+
+      <label for="select-native-2">Select Scorecard Type</label>
+      <select name="select-native-2" id="scorecardtypeselector">
+          <option value="singleplayer">Detailed Single Player</option>
+          <option value="4player">Simple 4 Player</option>
+      </select>
+
+      <div id="playernamesinput" style="display:none">
     <label for="text-basic">Player 1:</label>
     <input name="text-basic" id="p1name" value="" type="text">
 
@@ -128,20 +147,10 @@
 
     <label for="text-basic">Player 4:</label>
     <input name="text-basic" id="p4name" value="" type="text">
+      </div>
 
-
-      <label for="select-native-2"></label>
-      <select name="select-native-2" id="courseselector">
-          <option value="par3">Blank par 3</option>
-          <option value="par72">Blank par 72</option>
-          <option value="QE">Queen Elizabeth</option>
-          <option value="StanleyPark">Stanley Park</option>
-          <option value="RupertPark">Rupert Park</option>
-      </select>
-
-      <p><a href="#one" id="startgame" class="ui-btn ui-shadow ui-corner-all">Create 4 Player Scorecard</a></p>
-      <p><a href="#one" id="newsinglegame" class="ui-btn ui-shadow ui-corner-all">Create Detailed Single Player Scorecard</a></p>
-
+      <p><a href="#one" id="creategame" class="ui-btn ui-shadow ui-corner-all">Begin</a></p>
+      
   </div><!-- /content -->
 
   <div data-role="footer" data-theme="a">
@@ -270,7 +279,8 @@
 
 </script>
 
-<script src="js/statistics.js"></script>
+<script src="js/statistics-player.js"></script>
+<script src="js/statistics-course.js"></script>
 <script src="js/scorecardui.js"></script>
 
 </html>

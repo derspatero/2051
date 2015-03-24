@@ -20,6 +20,13 @@
     padding: 0;
 }
 
+table#playerstatstable {
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    max-width: 300px;
+}
+
 /*.scoreselector {
 	width: 3.5em;
 	height: 3.5em;

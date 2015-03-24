@@ -62,21 +62,31 @@ $("#courseselector").change(function() {
     }
 });
 
-$("#newsinglegame").click(function(){
-    scorecard.setScoreCardType("single");
-    scorecard.setScoreCardDate(new Date());
-    statistics = new coursestatistics(scorecard.getCourseName(),5);
-    statistics.calculateCourse();
-    createSinglePlayerScoreCard();
+$("#scorecardtypeselector").change(function (){
+   if ($(this).val() == "4player"){
+       $("#playernamesinput").css("display","block");
+   }
+    else {
+       $("#playernamesinput").css("display","none");
+   }
 });
 
-$("#startgame").click(function(){
-    scorecard.setPlayerNames($('#p1name').val(),$('#p2name').val(),$('#p3name').val(),$('#p4name').val());
-    scorecard.setScoreCardType("4player");
-    scorecard.setScoreCardDate(new Date());
-    createScoreCard();
-
+$("#creategame").click(function (){
+    if ($("#scorecardtypeselector").val() == "4player"){
+        scorecard.setPlayerNames($('#p1name').val(),$('#p2name').val(),$('#p3name').val(),$('#p4name').val());
+        scorecard.setScoreCardType("4player");
+        scorecard.setScoreCardDate(new Date());
+        createScoreCard();
+    }
+    else {
+        scorecard.setScoreCardType("single");
+        scorecard.setScoreCardDate(new Date());
+        statistics = new coursestatistics(scorecard.getCourseName(),5);
+        statistics.calculateCourse();
+        createSinglePlayerScoreCard();
+    }
 });
+
 
 function createSavedGameDirectory() {
     if (localStorage.length > 0 ){
@@ -498,25 +508,6 @@ function createSinglePlayerScoreCard() {
 
         $("#backninetotals").html(tablestring);
     }
-
-    //function updatefronttotals() {
-    //    scorecard.calculateScores();
-    //
-    //    var tablestring = '<tr></tr><td>Front</td><td>' +
-    //        scorecard.getFrontTotalPar() + '</td><td>' + scorecard.getFrontTotalYardage() + '</td><td>' +
-    //        scorecard.getFrontTotalForPlayer(0) + '</td><td>' + scorecard.getFrontTotalPuttsForPlayer(0) + '</td>';
-    //
-    //
-    //    if (statistics.getBestScore() != 0) {
-    //        tablestring += '<td>' + statistics.getFrontAverageScore() + '</td>'
-    //        + '<td>' + statistics.getFrontBestScore() + '</td>'
-    //        + '<td>' + statistics.getFrontAverageToGreen() + '</td>'
-    //        + '<td>' + statistics.getFrontPuttingAverage() + '</td>';
-    //    }
-    //
-    //    tablestring += '</tr>';
-    //    $("#frontninetotals").html(tablestring);
-    //}
 
 
 
