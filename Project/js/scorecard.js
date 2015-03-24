@@ -266,8 +266,8 @@ function scoreCard() {
         }
     }
 
-    this.createQueenElizabeth = function() {
-        this.course.coursename = "Queen Elizabeth Pitch and Putt";
+    this.createQueenElizabethPark = function() {
+        this.course.coursename = "Queen Elizabeth Park Pitch and Putt";
         this.course.holes[0].yd = 70;
         this.course.holes[1].yd = 110;
         this.course.holes[2].yd = 65;
@@ -331,6 +331,73 @@ function scoreCard() {
         this.course.holes[16].yd = 95;
         this.course.holes[17].yd = 70;
     }
+
+    this.createKensingtonPark = function() {
+        this.course.coursename = "Kensington Park Pitch and Putt";
+        this.course.holes[0].yd = 100;
+        this.course.holes[1].yd = 95;
+        this.course.holes[2].yd = 95;
+        this.course.holes[3].yd = 50;
+        this.course.holes[4].yd = 80;
+        this.course.holes[5].yd = 65;
+        this.course.holes[6].yd = 55;
+        this.course.holes[7].yd = 80;
+        this.course.holes[8].yd = 110;
+        this.course.holes[9].yd = 110;
+        this.course.holes[10].yd = 60;
+        this.course.holes[11].yd = 90;
+        this.course.holes[12].yd = 90;
+        this.course.holes[13].yd = 55;
+        this.course.holes[14].yd = 90;
+        this.course.holes[15].yd = 90;
+        this.course.holes[16].yd = 70;
+        this.course.holes[17].yd = 65;
+    }
+
+    this.createCentralPark = function() {
+        this.course.coursename = "Central Park Pitch and Putt";
+        this.course.holes[0].yd = 90;
+        this.course.holes[1].yd = 85;
+        this.course.holes[2].yd = 100;
+        this.course.holes[3].yd = 65;
+        this.course.holes[4].yd = 80;
+        this.course.holes[5].yd = 85;
+        this.course.holes[6].yd = 130;
+        this.course.holes[7].yd = 90;
+        this.course.holes[8].yd = 85;
+        this.course.holes[9].yd = 90;
+        this.course.holes[10].yd = 80;
+        this.course.holes[11].yd = 105;
+        this.course.holes[12].yd = 50;
+        this.course.holes[13].yd = 100;
+        this.course.holes[14].yd = 90;
+        this.course.holes[15].yd = 85;
+        this.course.holes[16].yd = 50;
+        this.course.holes[17].yd = 75;
+    }
+
+    this.createAmblesidePark = function() {
+        this.course.coursename = "Ambleside Park Pitch and Putt";
+        this.course.holes[0].yd = 85;
+        this.course.holes[1].yd = 62;
+        this.course.holes[2].yd = 70;
+        this.course.holes[3].yd = 65;
+        this.course.holes[4].yd = 60;
+        this.course.holes[5].yd = 88;
+        this.course.holes[6].yd = 114;
+        this.course.holes[7].yd = 50;
+        this.course.holes[8].yd = 47;
+        this.course.holes[9].yd = 67;
+        this.course.holes[10].yd = 67;
+        this.course.holes[11].yd = 47;
+        this.course.holes[12].yd = 59;
+        this.course.holes[13].yd = 48;
+        this.course.holes[14].yd = 56;
+        this.course.holes[15].yd = 45;
+        this.course.holes[16].yd = 92;
+        this.course.holes[17].yd = 82;
+    }
+
 
 
 }

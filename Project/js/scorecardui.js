@@ -50,15 +50,27 @@ $("#courseselector").change(function() {
     }
     if($(this).val() == 'QE') {
         scorecard = new scoreCard();
-        scorecard.createQueenElizabeth();
+        scorecard.createQueenElizabethPark();
     }
-    if($(this).val() == 'StanleyPark') {
+    if($(this).val() == 'Stanley') {
         scorecard = new scoreCard();
         scorecard.createStanleyPark();
     }
-    if($(this).val() == 'RupertPark') {
+    if($(this).val() == 'Rupert') {
         scorecard = new scoreCard();
         scorecard.createRupertPark();
+    }
+    if($(this).val() == 'Kensington') {
+        scorecard = new scoreCard();
+        scorecard.createKensingtonPark();
+    }
+    if($(this).val() == 'Central') {
+        scorecard = new scoreCard();
+        scorecard.createCentralPark();
+    }
+    if($(this).val() == 'Ambleside') {
+        scorecard = new scoreCard();
+        scorecard.createAmblesidePark();
     }
 });
 
