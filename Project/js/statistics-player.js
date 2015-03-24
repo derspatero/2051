@@ -83,7 +83,8 @@ function calculateStats() {
         statistics.handicap *= -1;
 
         //display stats
-        if (statistics.number_of_games !=0 ) {
+        if (parseInt(statistics.number_of_games) > 0 ) {
+            console.log("number of games: " + parseInt(statistics.number_of_games));
             $("#average_score_total").html(statistics.average);
             $("#average_score_last20").html(statistics.average_of_last20);
             $("#best_score").html(statistics.best_score);
@@ -93,6 +94,7 @@ function calculateStats() {
             $("#putting_average").html(statistics.putting);
         }
         else {
+            console.log("else - no games found");
             $("#playerstatstable").css("display","none");
         }
     }

@@ -2,10 +2,9 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Multi-page template</title>
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Multi-page template</title>
     <link rel="stylesheet" href="./js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
     <link rel="stylesheet" href="./css/scorecard.css">
     <script src="./js/jquery-1.11.1.min.js"></script>
@@ -21,12 +20,9 @@
         <h1>Pitch And Putt Score Keeper</h1>
     </div><!-- /header -->
 
-
-
     <div role="main" class="ui-content">
 
         <a href="#home"><img id = "landing_page" src = "img/miracleOnMtPleasant.png"></a>
-
 
     </div><!-- /content -->
 
@@ -42,8 +38,6 @@
   </div><!-- /header -->
 
   <div role="main" class="ui-content">
-
-
 
       <table id="playerstatstable">
           <tr>
@@ -128,7 +122,7 @@
           <option value="Kensington">Kensington Park</option>
           <option value="Central">Central Park</option>
           <option value="Ambleside">Ambleside Park</option>
-          <option value="par3">Blank par 3</option>
+          <!--<option value="par3">Blank par 3</option>-->
       </select>
 
       <label for="select-native-2">Select Scorecard Type</label>
@@ -220,66 +214,7 @@
 
 
 
-<!-- Start of third page: #popup -->
-<div data-role="page" id="popup">
-
-  <div data-role="header" data-theme="b">
-    <!-- <h1></h1> -->
-  </div><!-- /header -->
-
-  <div role="main" class="ui-content">
-
-    <h2 id="scoreelement"></h2>
-
-    <label for="select-native-2"></label>
-    <select name="select-native-2" id="scoreselector">
-      <option value="1">1</option>
-      <option value="2">2</option> 
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option> 
-      <option value="6">6</option>
-    </select>
-
-<!--<form id="scoreselector">-->
-<!--    <fieldset data-role="controlgroup" data-type="vertical" >-->
-<!--        <input type="radio" name="radio-choice-v-2" id="radio-choice-v-2a" value="1">-->
-<!--        <label for="radio-choice-v-2a">1</label>-->
-<!--        <input type="radio" name="radio-choice-v-2" id="radio-choice-v-2b" value="2">-->
-<!--        <label for="radio-choice-v-2b">2</label>-->
-<!--        <input type="radio" name="radio-choice-v-2" id="radio-choice-v-2c" value="3" checked="checked">-->
-<!--        <label for="radio-choice-v-2c">3</label>-->
-<!--        <input type="radio" name="radio-choice-v-2" id="radio-choice-v-2d" value="4">-->
-<!--        <label for="radio-choice-v-2d">4</label>-->
-<!--        <input type="radio" name="radio-choice-v-2" id="radio-choice-v-2e" value="5">-->
-<!--        <label for="radio-choice-v-2e">5</label>-->
-<!--        <input type="radio" name="radio-choice-v-2" id="radio-choice-v-2f" value="6">-->
-<!--        <label for="radio-choice-v-2f">6</label>-->
-<!--    </fieldset>-->
-<!--</form> -->
-
-
-
-<!--     <p>I have an id of "popup" on my page container and only look like a dialog because the link to me had a <code>data-rel="dialog"</code> attribute which gives me this inset look and a <code>data-transition="pop"</code> attribute to change the transition to pop. Without this, I'd be styled as a normal page.</p> -->
-    <p><a id="redirectbacktoscorecard" href="#one" data-rel="back" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-back ui-btn-icon-left scoreupdated">Done</a></p>
-  </div><!-- /content -->
-
-  <!-- <div data-role="footer">
-    <h4></h4>
-  </div> --><!-- /footer -->
-</div><!-- /page popup -->
-
 </body>
-
-
-
-<script>
-
-
-
-
-
-</script>
 
 <script src="js/statistics-player.js"></script>
 <script src="js/statistics-course.js"></script>
