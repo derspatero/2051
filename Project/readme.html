@@ -1,0 +1,43 @@
+
+<h1>COMP-2051 Course Project</h1>
+<h2>Edward Lambke A00892244</h2>
+
+<h3>DESCRIPTION:</h3>
+<p>This is a golf score card and stat tracking app for lower mainland pitch and putt golf courses.</p>
+
+<h3>FEATURES:</h3>
+-Preloaded score card templates for Vancouver, Burnaby and West Vancouver pitch and putt courses <br />
+-Games are saved automatically whenever a change is made <br />
+-Previously saved games can be reloaded to view or continue <br />
+-Previously saved games can be deleted <br />
+-2 views are available: Basic 4 player scorecard, detailed statistic tracking single player scorecard <br />
+-Player statistics are tracked and displayed if there is at least one completed saved game <br />
+-Course statistics are tracked and displayed if there is at least one completed saved game for the currently open course <br />
+-Designed to be placed in the www/ folder of a Cordova app <br />
+
+<h3>TO USE:</h3>
+1. Click on the landing page image to continue to the main menu. <br />
+2. If there is 1 or more completed saved games, player stats (number of games played, best score, handicap, etc) will be displayed at the top of the menu page <br />
+3. If there is 1 or more saved games, a drop down selector with the games will be displayed. <br />
+4. The selected game can be opened or deleted <br />
+5. If a new game is selected, the game config screen will be displayed. <br />
+6. Select the course and the type of scorecard to create and click "Begin" <br />
+7. If a 4 player card is selected, enter the names of the players and click "Begin" <br />
+8. If a Detailed Single Player card is selected, statistics for each hole are displayed (if there are previously saved completed games) <br />
+9. If a score exists for every hole the game will be considered complete and will be included in the calculation of player and course statistics <br />
+
+<h3>TECHNOLOGY:</h3>
+controller: JQuery <br />
+view: JQueryMobile <br />
+model: JSON <br />
+storage: localstorage <br />
+
+<h3>KNOWN ISSUES:</h3>
+-Tested with Chrome and as an Android Cordova app <br />
+-Some screen size issues: currently optimized for my Samsung G3 mini in landscape <br />
+-Webstorage issue with Firefox causes a JS error when creating the previous game menu <br />
+-No input validation for putting: invalid or incomplete putting data will cause errors in the statistics <br />
+-Some ugly code in the scorecardui.js and statistics-player.js <br />
+
+
+

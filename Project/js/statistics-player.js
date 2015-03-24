@@ -83,21 +83,22 @@ function calculateStats() {
         statistics.handicap *= -1;
 
         //display stats
-        if (parseInt(statistics.number_of_games) > 0 ) {
-            console.log("number of games: " + parseInt(statistics.number_of_games));
-            $("#average_score_total").html(statistics.average);
-            $("#average_score_last20").html(statistics.average_of_last20);
-            $("#best_score").html(statistics.best_score);
-            $("#worst_score").html(statistics.worst_score);
-            $("#handicap").html(statistics.handicap);
-            $("#number_of_games").html(statistics.number_of_games);
-            $("#putting_average").html(statistics.putting);
-        }
-        else {
-            console.log("else - no games found");
-            $("#playerstatstable").css("display","none");
-        }
+
+        console.log("number of games: " + parseInt(statistics.number_of_games));
+
+        $("#playerstatstable").css("display","block");
+
+        $("#average_score_total").html(statistics.average);
+        $("#average_score_last20").html(statistics.average_of_last20);
+        $("#best_score").html(statistics.best_score);
+        $("#worst_score").html(statistics.worst_score);
+        $("#handicap").html(statistics.handicap);
+        $("#number_of_games").html(statistics.number_of_games);
+        $("#putting_average").html(statistics.putting);
+
+
     }
+
 
 }
 

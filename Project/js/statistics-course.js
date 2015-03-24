@@ -162,4 +162,5 @@ function coursestatistics(course, history) {
     this.getBackPuttingAverage = function() {
         return (this.stats.backtotal.averageputts).toFixed(2);
     }
+
 }
