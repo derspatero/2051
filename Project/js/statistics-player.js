@@ -25,7 +25,7 @@ function calculateStats() {
             var game = JSON.parse(localStorage.getItem(localStorage.key(i)));
             //console.log(game);
 
-            if (game.gamestatus == "closed") {
+            if (game.gamestatus == "closed" && game.scorecardtype == "single") {
                 statistics.number_of_games += 1;
 
                 //calculate total average score

@@ -39,7 +39,7 @@ function coursestatistics(course, history) {
         if (localStorage.length > 0) {
             for (var i = localStorage.length - 1; i >= 0; i--) {
                 var game = JSON.parse(localStorage.getItem(localStorage.key(i)));
-                if (game.gamestatus == "closed" && game.coursename == this.stats.coursename) {
+                if (game.gamestatus == "closed" && game.coursename == this.stats.coursename && game.scorecardtype == "single") {
                     this.stats.numberofgames += 1;
                     if (gamecounter < this.stats.gamesincludedinstats) {
                         for (var j = 0; j < game.holes.length; j++) {

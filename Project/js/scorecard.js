@@ -286,6 +286,7 @@ function scoreCard() {
         this.course.holes[15].yd = 90;
         this.course.holes[16].yd = 50;
         this.course.holes[17].yd = 80;
+        //alert(this.course.coursename);
     }
 
     this.createStanleyPark = function() {

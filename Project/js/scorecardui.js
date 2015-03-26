@@ -39,51 +39,41 @@ $("#deletegame").click(function(){
 
 });
 
-$("#courseselector").change(function() {
+$("#creategame").click(function (){
 
-    if($(this).val() == 'par3') {
+    if($("#courseselector").val() == 'par3') {
         scorecard = new scoreCard();
     }
-    if($(this).val() == 'par72') {
+    if($("#courseselector").val() == 'par72') {
         scorecard = new scoreCard();
         scorecard.createPar72();
     }
-    if($(this).val() == 'QE') {
+    if($("#courseselector").val() == 'QE') {
         scorecard = new scoreCard();
         scorecard.createQueenElizabethPark();
+        //alert('QE');
     }
-    if($(this).val() == 'Stanley') {
+    if($("#courseselector").val() == 'Stanley') {
         scorecard = new scoreCard();
         scorecard.createStanleyPark();
     }
-    if($(this).val() == 'Rupert') {
+    if($("#courseselector").val() == 'Rupert') {
         scorecard = new scoreCard();
         scorecard.createRupertPark();
     }
-    if($(this).val() == 'Kensington') {
+    if($("#courseselector").val() == 'Kensington') {
         scorecard = new scoreCard();
         scorecard.createKensingtonPark();
     }
-    if($(this).val() == 'Central') {
+    if($("#courseselector").val() == 'Central') {
         scorecard = new scoreCard();
         scorecard.createCentralPark();
     }
-    if($(this).val() == 'Ambleside') {
+    if($("#courseselector").val() == 'Ambleside') {
         scorecard = new scoreCard();
         scorecard.createAmblesidePark();
     }
-});
 
-$("#scorecardtypeselector").change(function (){
-   if ($(this).val() == "4player"){
-       $("#playernamesinput").css("display","block");
-   }
-    else {
-       $("#playernamesinput").css("display","none");
-   }
-});
-
-$("#creategame").click(function (){
     if ($("#scorecardtypeselector").val() == "4player"){
         scorecard.setPlayerNames($('#p1name').val(),$('#p2name').val(),$('#p3name').val(),$('#p4name').val());
         scorecard.setScoreCardType("4player");
