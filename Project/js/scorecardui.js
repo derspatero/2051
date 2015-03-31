@@ -11,7 +11,6 @@ var scoreformbuttonpt4 = '</select>';
 var scorecard = new scoreCard();
 var scoreid;
 var statistics;
-var URL;
 
 /*
  * SETUP SCREEN UI
@@ -103,15 +102,12 @@ $("#creategame").click(function (){
     }
 });
 
-$(".backbutton").click(function() {
-
-    //alert("load url: " + URL);
-
-    //window.location = URL + "#home";
-    ////window.location = "www.cnn.com";
-    window.location.reload();
-
-
+$(window).on('hashchange', function(){
+    //alert(window.location.hash );
+    if(window.location.hash == "#home" || window.location.hash == "#setup") {
+        //alert("reload " + window.location.hash );
+        window.location.reload();
+    }
 });
 
 
@@ -127,7 +123,7 @@ function createSavedGameDirectory() {
         directory += '</select>';
 
 
-        directory  += '<p><a href="#one" id="continuegame" class="ui-btn ui-shadow ui-corner-all">Continue Selected Game</a></p>';
+        directory  += '<p><a href="#one" id="continuegame" class="ui-btn ui-shadow ui-corner-all">Continue/View Selected Game</a></p>';
         directory += '<p><a href="." id="deletegame" class="ui-btn ui-shadow ui-corner-all">Delete Selected Game</a></p>';
 
         $("#file_directory").html(directory);

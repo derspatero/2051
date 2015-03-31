@@ -56,10 +56,13 @@ function calculateStats() {
                 //calculate putting and averagetogreen
                 if (last20index < 20) {
                     var putts =0;
+                    var drives = 0
                     for (var j = 0; j < game.holes.length; j++){
                         putts += game.holes[j].putts[0];
+                        drives += game.holes[j].playerscores[0] - game.holes[j].putts[0];
                     }
                     statistics.putting += putts/game.holes.length;
+                    statistics.greens += drives/game.holes.length;
                 }
 
                 last20index++;
@@ -69,6 +72,7 @@ function calculateStats() {
         statistics.average = (parseInt(statistics.average)/statistics.number_of_games).toFixed(2);
         statistics.average_of_last20 = (parseInt(statistics.average_of_last20)/statistics.number_of_games).toFixed(2);
         statistics.putting = (statistics.putting/statistics.number_of_games).toFixed(2);
+        statistics.greens = (statistics.greens/statistics.number_of_games).toFixed(2);
 
         //calculate handicap
         for (var i=0; i < handicapscores.length && i < 10; i++){
@@ -95,6 +99,7 @@ function calculateStats() {
         $("#worst_score").html(statistics.worst_score);
         $("#handicap").html(statistics.handicap);
         $("#number_of_games").html(statistics.number_of_games);
+        $("#green_average").html(statistics.greens);
         $("#putting_average").html(statistics.putting);
 
 
