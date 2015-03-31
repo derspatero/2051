@@ -39,7 +39,7 @@ $("#continuegame").click(function(){
 
 $("#deletegame").click(function(){
     localStorage.removeItem($("#gameselector").val());
-    //createSavedGameDirectory();
+    window.location.reload();
 
 });
 
