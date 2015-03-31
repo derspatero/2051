@@ -39,6 +39,15 @@ $("#deletegame").click(function(){
 
 });
 
+$("#scorecardtypeselector").change(function (){
+    if ($(this).val() == "4player") {
+        $("#playernamesinput").css("display","block");
+    }
+    else {
+        $("#playernamesinput").css("display","none");
+    }
+});
+
 $("#creategame").click(function (){
 
     if($("#courseselector").val() == 'par3') {

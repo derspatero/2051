@@ -20,7 +20,7 @@ function calculateStats() {
 
     if (localStorage.length > 0 ){
         var last20index = 0;
-        var handicapscores = [0];
+        var handicapscores = [];
         for (var i = localStorage.length - 1; i >= 0; i--) {
             var game = JSON.parse(localStorage.getItem(localStorage.key(i)));
             //console.log(game);
@@ -75,6 +75,7 @@ function calculateStats() {
             statistics.handicap += handicapscores[i];
         }
         if (handicapscores.length < 10){
+            //alert(handicapscores);
             statistics.handicap = (statistics.handicap/handicapscores.length).toFixed(2);
         }
         else {
