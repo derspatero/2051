@@ -11,12 +11,17 @@ var scoreformbuttonpt4 = '</select>';
 var scorecard = new scoreCard();
 var scoreid;
 var statistics;
+var URL;
 
 /*
  * SETUP SCREEN UI
  */
 
+
+
+
 createSavedGameDirectory();
+
 
 $("#continuegame").click(function(){
 
@@ -97,6 +102,18 @@ $("#creategame").click(function (){
         createSinglePlayerScoreCard();
     }
 });
+
+$(".backbutton").click(function() {
+
+    //alert("load url: " + URL);
+
+    //window.location = URL + "#home";
+    ////window.location = "www.cnn.com";
+    window.location.reload();
+
+
+});
+
 
 
 function createSavedGameDirectory() {
