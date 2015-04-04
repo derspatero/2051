@@ -38,8 +38,11 @@ $("#continuegame").click(function(){
 });
 
 $("#deletegame").click(function(){
-    localStorage.removeItem($("#gameselector").val());
-    window.location.reload();
+
+    if (confirm("Delete " + $("#gameselector").val() + "?") == true) {
+        localStorage.removeItem($("#gameselector").val());
+        window.location.reload();
+    }
 
 });
 

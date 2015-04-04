@@ -43,7 +43,7 @@ function coursestatistics(course, history) {
                     this.stats.numberofgames += 1;
                     if (gamecounter < this.stats.gamesincludedinstats) {
                         for (var j = 0; j < game.holes.length; j++) {
-                            if (this.stats.holes[j].bestscore < parseInt(game.holes[j].playerscores[0]) || this.stats.holes[j].bestscore == 0){
+                            if (this.stats.holes[j].bestscore > parseInt(game.holes[j].playerscores[0]) || this.stats.holes[j].bestscore == 0){
                                 this.stats.holes[j].bestscore = parseInt(game.holes[j].playerscores[0]);
                             }
                             this.stats.holes[j].average += parseInt(game.holes[j].playerscores[0]);
@@ -52,13 +52,13 @@ function coursestatistics(course, history) {
                         }
                         gamecounter++;
                     }
-                    if (this.stats.fronttotal.bestscore < game.fronttotal.playerscores[0] || this.stats.fronttotal.bestscore == 0) {
+                    if (this.stats.fronttotal.bestscore > game.fronttotal.playerscores[0] || this.stats.fronttotal.bestscore == 0) {
                         this.stats.fronttotal.bestscore = game.fronttotal.playerscores[0];
                     }
-                    if (this.stats.backtotal.bestscore < game.backtotal.playerscores[0] || this.stats.backtotal.bestscore == 0) {
+                    if (this.stats.backtotal.bestscore > game.backtotal.playerscores[0] || this.stats.backtotal.bestscore == 0) {
                         this.stats.backtotal.bestscore = game.backtotal.playerscores[0];
                     }
-                    if (this.stats.total.bestscore < game.total.playerscores[0] || this.stats.total.bestscore == 0) {
+                    if (this.stats.total.bestscore > game.total.playerscores[0] || this.stats.total.bestscore == 0) {
                         this.stats.total.bestscore = game.total.playerscores[0];
                     }
 
