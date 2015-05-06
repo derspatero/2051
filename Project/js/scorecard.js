@@ -399,6 +399,10 @@ function scoreCard() {
         this.course.holes[17].yd = 82;
     }
 
+    this.offhours = function() {
+        this.course.coursename = "Outlaw Pitch and Putt";
+    }
+
 
 
 }

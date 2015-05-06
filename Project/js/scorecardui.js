@@ -89,6 +89,10 @@ $("#creategame").click(function (){
         scorecard = new scoreCard();
         scorecard.createAmblesidePark();
     }
+    if($("#courseselector").val() == 'offhours') {
+        scorecard = new scoreCard();
+        scorecard.offhours();
+    }
 
     if ($("#scorecardtypeselector").val() == "4player"){
         scorecard.setPlayerNames($('#p1name').val(),$('#p2name').val(),$('#p3name').val(),$('#p4name').val());
